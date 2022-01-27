@@ -14,13 +14,6 @@ exports.likeSauce = (req, res, next) =>{
                     // si cet utilisateur est déjà présent dans le tableau 
                     // des utilisateurs qui aiment cette sauce
                     res.status(200).json({ message: "Cet utilisateur a déjà dit qu'il aimait cette sauce !"})
-                    // Sauce
-                    //     .updateOne(
-                    //         {_id:req.params.id}, 
-                    //         { $inc: { likes: 0 } } //incrémente un champ d'une valeur spécifiée
-                    //     )
-                    //     .then(() => res.status(200).json({ message: "Cet utilisateur a déjà dit qu'il aimait cette sauce !"}))
-                    //     .catch(error => res.status(400).json({ error }));
                 }
                
                 if(!sauce.usersLiked.includes(req.body.userId)){
@@ -52,13 +45,7 @@ exports.likeSauce = (req, res, next) =>{
                     // si l'utilisateur est déjà dans le tableau des utilisateurs
                     // qui n'aiment cette sauce
                     res.status(200).json({message: "L'utilisateur a déjà dit qu'il n'aimait pas cette sauce"})
-                    // Sauce
-                    //     .updateOne(
-                    //         {_id:req.params.id},
-                    //         { $inc: { dislikes:0 } } // dislike est à 0
-                    //     )
-                    //     .then(() => res.status(200).json({message: "L'utilisateur a déjà dit qu'il n'aimait pas cette sauce"}))
-                    //     .catch(error => res.status(400).json({ error }))
+                  
                 }
 
                 if(!sauce.usersDisliked.includes(req.body.userId)){ 
