@@ -1,5 +1,5 @@
 function Banner() {
-    return <h1>La maison jungle</h1>
+    return <h1>Groupomania</h1>
 }
 
 export default Banner
