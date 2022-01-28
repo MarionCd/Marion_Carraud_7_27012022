@@ -19,7 +19,20 @@ Contraintes :
 - données de connexion doivent être sécurisées
 
 La web app doit pouvoir se connecter et se déconnecter
-La session du user persiste pendnat qu'il est connecté
+La session du user persiste pendant qu'il est connecté
 
 Projet en js
 Respect standards WCAG
+
+//conseils Marie
+- vue.js plus facile que react
+- MySQL rester juste sur les notions de base
+- Reprendre le back du P6 mais remplacer les mentions de mongoDB
+- Les entités doivent être séparées avec différents numéros de port
+- Le backend appelle la BDD
+- Le frontend n'appelle pas la BDD
+- Le back exécuté sur serveur
+- Le front exécuté sur navigateur
+- Pour vue.js choisir plutôt la version 2
+- Commencer comme on veut soit par back, soit par front
+- Ressources/doc à chercher
