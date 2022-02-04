@@ -12,8 +12,8 @@ function ShoppingList() {
 	return (
 		<div>
 			<ul>
-				{categories.map((cat, i) => (
-					<li key={i}>{cat}</li>
+				{categories.map((cat) => (
+					<li key={cat}>{cat}</li>
 				))}
 			</ul>
 			<ul className='lmj-plant-list'>
