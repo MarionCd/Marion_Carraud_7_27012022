@@ -1,5 +1,6 @@
 import Banner from '../Banner/Banner'
 import LoginAccueil from '../Login/LoginAccueil'
+import Footer from '../Footer/Footer'
 import './App.css'
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
         <div>
         <Banner />
         <LoginAccueil/>
+        <Footer />
         </div>
         )
 }
