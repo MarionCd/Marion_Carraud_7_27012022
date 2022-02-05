@@ -1,0 +1,109 @@
+/**********************Arrière-plan*******************/
+
+.grp-accueil{
+    content:"";
+    height:700px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../../assets/background_groupomania.jpg");
+    display:flex;
+    justify-content: center;
+}
+
+/**********************Bloc login / signup*******************/
+
+.grp-accueil__login-ou-signup{
+    content:"";
+    height:300px;
+    background-color:#fff;
+    border-radius:25px;
+    width:33%;
+    margin-top:40px;
+    box-shadow: 1px 0px 28px 1px rgba(0,0,0,0.71);
+    -webkit-box-shadow: 1px 0px 28px 1px rgba(0,0,0,0.71);
+    -moz-box-shadow: 1px 0px 28px 1px rgba(0,0,0,0.71);
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    padding:10px;
+}
+
+/**********************Bloc login*******************/
+.grp-accueil__login{
+    width:100%;
+
+}
+
+.grp-accueil__login--btn{
+    border-radius:25px;
+}
+
+.grp-accueil__login--form{
+    border-radius:25px;
+}
+
+.grp-accueil__login h2{
+    text-align: center;
+    color:#162847;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size:24px;
+}
+
+
+.grp-accueil__login--form div{
+    padding-left:15px;
+    padding-right:15px;
+    margin-bottom:10px;
+    font-size:18px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.grp-accueil__login--form #mdp__login,
+.grp-accueil__login--form #email__login{
+    width:100%;
+    height:25px;
+    border-radius: 8px;
+    border:#162847 1px solid;
+}
+
+#submit__login{
+    color:#fff;
+    background-color: #162847;
+    border-radius:50px;
+    border:none;
+    padding:10px 15px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size:22px;
+}
+
+#submit__login:hover{
+    background-color:#D1515A;
+}
+
+
+/************************Bloc signup************************/
+.grp-accueil__signup{
+    border-top: #162847 2px dotted;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom:30px;
+    padding-top:22px;
+}
+
+
+.grp-accueil__signup button{
+    background-color: #D1515A;
+    border-radius:50px;
+    border:none;
+    padding:10px 15px;
+}
+
+.grp-accueil__signup button:hover{
+    background-color:#162847;
+    cursor:pointer
+}
+
+

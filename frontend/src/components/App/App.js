@@ -1,12 +1,12 @@
 import Banner from '../Banner/Banner'
-import BodyAccueil from '../BodyAccueil/BodyAccueil'
+import LoginAccueil from '../Login/LoginAccueil'
 import './App.css'
 
 function App() {
     return (
         <div>
         <Banner />
-        <BodyAccueil/>
+        <LoginAccueil/>
         </div>
         )
 }

@@ -1,9 +1,10 @@
-import './BodyAccueil.css'
+import './Login.css'
 
-function BodyAccueil() {
+function LoginAccueil() {
     //const slogan = "Créer du lien sur la toile"
-    const titreLogin = "J'ai déjà un compte"
-    const titreSignUp = "Je me créé un compte"
+    const titreLogin = "Connectez-vous"
+  
+    const titreSignUp = "Inscrivez-vous"
     return (
         <div className='grp-accueil'>
             <div className="grp-accueil__login-ou-signup">
@@ -11,26 +12,24 @@ function BodyAccueil() {
                     <form className="grp-accueil__login--form">
                         <h2>{titreLogin}</h2>
                         <div>
-                            <label for="email">Email :</label>
-                            <input  type="email" name="email" id="email__login" required placeholder="adresse email"></input>
+                            <input  type="email" name="email" id="email__login" required placeholder="Adresse email"></input>
                         </div>
                         <div>
-                            <label for="password">Mot de passe :</label>
-                            <input placeholder="Mot de passe"></input>
+                            <input placeholder="Mot de passe" id="mdp__login"></input>
                         </div>
                         <div>
-                            <input type="submit" name="btn__login"></input>   
+                            <input type="submit" name="btn__login" id="submit__login"></input>   
                             {/* penser à e.preventDefault(); */}
                         </div>
                     </form>
                    
                 </div>
                 <div className="grp-accueil__signup">
-                    <button><h2>{titreSignUp}</h2></button>
+                    Pas encore de compte ?&nbsp;<a href="">{titreSignUp}</a>
                 </div>
             </div>
         </div>
     )
 }
 
-export default BodyAccueil
+export default LoginAccueil

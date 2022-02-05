@@ -2,7 +2,7 @@ import logo from '../../assets/icon-left-font-monochrome-white.svg'
 import './Banner.css'
 
 function Banner() {
-    const slogan = "Créer du lien sur la toile"
+    const slogan = "Echanger pour mieux créer"
     return (
         <div className='grp-banner'>
             <img src={logo} alt='Groupomania' className='grp-logo' />
