@@ -1,15 +1,11 @@
 import './Footer.css'
-import logo from '../../assets/icon-rouge.png'
+import logo from '../../assets/icon-left-font-monochrome-white.svg'
 
 function Footer(){
     return(
         
         <footer>
-            <div class="limitedWidthBlockContainer footerMain">
-                <div class="limitedWidthBlock">
-                    <div>
-                        <img class="logo" src={logo} alt="Logo de l'entreprise"/>
-                    </div>
+            <div className="Footer__main">    
                     <div>
                         <p>10 quai de la charente 75019 Paris 19</p>
                     </div>
@@ -19,10 +15,14 @@ function Footer(){
                     <div>
                         <p>Email : support@name.com</p>
                     </div>
+                    <div className="Footer__bloc-logo">
+                        <img className="Footer__logo" src={logo} alt="Logo Groupomania"/>
+                        <div className="Footer__line"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="limitedWidthBlockContainer footerSecondary">
-                <div class="limitedWidthBlock">
+            
+            <div className="Footer__secondary">
+                <div>
                     <p>© Copyright 2021 - 2042 | Openclassrooms by Openclassrooms | All Rights Reserved | Powered </p>
                 </div>
             </div>

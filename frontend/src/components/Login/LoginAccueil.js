@@ -1,10 +1,10 @@
-import './Login.css'
+
+import './LoginAccueil.css'
 
 function LoginAccueil() {
     //const slogan = "Créer du lien sur la toile"
     const titreLogin = "Connectez-vous"
-  
-    const titreSignUp = "Inscrivez-vous"
+
     return (
         <div className='grp-accueil'>
             <div className="grp-accueil__login-ou-signup">
@@ -25,7 +25,7 @@ function LoginAccueil() {
                    
                 </div>
                 <div className="grp-accueil__signup">
-                    Pas encore de compte ?&nbsp;<a href="">{titreSignUp}</a>
+                    Pas encore de compte ?&nbsp;<a href="">Inscrivez-vous</a>
                 </div>
             </div>
         </div>
