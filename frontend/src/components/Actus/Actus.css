@@ -20,7 +20,6 @@
 
 .accueil__center{
     width:70%;
-    background-color: #fff;
     border-radius:25px;
     content:"";
    
@@ -124,6 +123,7 @@
 
 .statut__btn{
     text-align:right;
+    margin-bottom:20px;
 }
 
 .statut__btn button{
@@ -142,4 +142,43 @@
     background-color:#fff;
     cursor:pointer;
     color:#D1515A;
+}
+
+.autres-publications{
+    background-color: #D1515A;
+    display:flex;
+    flex-direction: row;
+}
+
+.publications__profil{
+    width:20%;
+    margin-left:10px;
+}
+
+.publications__profil img{
+    margin:25px 0px 0px 25px;
+}
+
+.publications__identite{
+    color:#fff;
+    font-size:18px;
+    margin-top:-5px;
+}
+
+
+.publications__identite p:hover{
+    cursor: pointer;
+}
+
+.publications__texte{
+    width:70%;
+    margin-top:25px;
+    background-color:#fff;
+    content:"";
+    margin-bottom:25px;
+    font-size:18px;
+    padding:10px;
+}
+.marge__right{
+    width:10%;
 }

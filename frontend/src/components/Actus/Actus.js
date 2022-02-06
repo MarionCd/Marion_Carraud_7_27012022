@@ -27,6 +27,20 @@ function Actus() {
                 <div className="statut__btn">
                     <button>Publier</button>
                 </div>
+
+                <div className='autres-publications'>
+                    <div className="publications__profil">
+                        <img src={photoProfil} alt="photo profil" className="grp-banner__vignette-profil"/>
+                        <div className="publications__identite"> <p>&nbsp;Prénom Nom</p> </div>
+                    </div>
+                    <div className="publications__texte">Globos latera urbis ait cuncta quod 
+                    per familiarium subversasque urbis terga subversasque 
+                    transiturus tamquam latera discurrunt tamquam longius 
+                    transiturus post.
+                    </div>
+                    <div className="marge__right"></div>
+                </div>
+
             </div>
             <div className='accueil__right'>
                 <h2>Actualités</h2>
