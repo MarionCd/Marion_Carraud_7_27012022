@@ -1,0 +1,19 @@
+.grp-accueil{
+    content:"";
+    height:700px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../../assets/background_groupomania.jpg");
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    
+}
+.Msg__error-404 p{
+    font-size:32px;
+    color:#D1515A;
+}
+
+.Msg__error-404 a{
+    font-size:18px;
+}

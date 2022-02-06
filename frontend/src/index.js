@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Login from './pages/Login/Login'
 import Inscription from './pages/Inscription/Inscription'
+import Error from '../src/components/Error/index'
+import Home from './pages/Home/Home'
 
 ReactDOM.render(
   <React.StrictMode>
   
     <Router>
-      
+      <Switch>
       <Route exact path="/">
         <Login />
       </Route>
@@ -18,6 +20,14 @@ ReactDOM.render(
         <Inscription/>
       </Route>
 
+      <Route exact path="/accueil">
+        <Home/>
+      </Route>
+
+      <Route>
+          <Error/>
+      </Route>
+      </Switch>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

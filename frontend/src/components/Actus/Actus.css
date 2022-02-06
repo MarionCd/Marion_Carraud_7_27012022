@@ -1,0 +1,145 @@
+/**********************Arrière-plan*******************/
+
+.grp-accueil__connecte{
+    content:"";
+    background-color: #AFAFAF;
+    display:flex;
+    justify-content: space-around;
+    color:#162847;
+    flex-direction:row;
+    padding-bottom:30px;
+    padding-top:30px;
+}
+.accueil__left,
+.accueil__right{
+    width:20%;
+    margin-right:10px;
+    margin-left:10px;
+   
+}
+
+.accueil__center{
+    width:70%;
+    background-color: #fff;
+    border-radius:25px;
+    content:"";
+   
+}
+
+.accueil__left{
+    margin-top:30px;
+}
+
+.accueil__right h2{
+    text-align: center;
+}
+.accueil__left ul{
+    list-style: none;
+}
+
+.accueil__left ul li{
+    padding-bottom:10px;
+    font-size:22px;
+}
+
+.accueil__left a{
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.accueil__left a:hover{
+    font-weight: 600;
+}
+
+.accueil__right{
+    display:flex;
+    flex-direction: column;
+}
+
+.image-actu1,
+.image-actu2,
+.image-actu3,
+.image-actu4{
+    background-size: cover;
+    width:100%;
+    height:150px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+
+.image-actu1{
+    background-image: url("../../assets/Actu1.jpg");   
+}
+
+.image-actu2{
+    background-image: url("../../assets/Actu2.jpg");   
+}
+
+.image-actu3{
+    background-image: url("../../assets/Actu3.jpg");   
+}
+
+.image-actu4{
+    background-image: url("../../assets/Actu4.jpg");   
+}
+
+.titre-actu{
+    background-color:#fff;
+    text-align: center;
+    padding:5px;
+    font-size:18px;
+    margin-bottom:20px;
+    text-overflow: ellipsis;
+    overflow:hidden;
+    white-space: nowrap;
+}
+
+.statut__btn,
+.statut-a-publier{
+    background-color:#162847;
+    width:100%;
+    content:"";
+}
+
+.statut-a-publier{
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+}
+
+.statut-a-publier img{
+    padding:25px;
+    width:20%;
+}
+
+.statut-a-publier input{
+    height:40px;
+    width: 70%;
+    margin-top:25px;
+}
+
+.statut__btn{
+    text-align:right;
+}
+
+.statut__btn button{
+    background-color: #D1515A;
+    border-radius:50px;
+    border:none;
+    padding:10px 15px;
+    margin-right:10%;
+    margin-bottom:20px;
+    font-size: 18px;
+    color:#fff;
+   
+}
+
+.statut__btn button:hover{
+    background-color:#fff;
+    cursor:pointer;
+    color:#D1515A;
+}

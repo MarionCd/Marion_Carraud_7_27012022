@@ -1,5 +1,7 @@
 
+
 import './LoginAccueil.css'
+import { Link } from 'react-router-dom'
 
 function LoginAccueil() {
     //const slogan = "Créer du lien sur la toile"
@@ -18,14 +20,14 @@ function LoginAccueil() {
                             <input placeholder="Mot de passe" id="mdp__login"></input>
                         </div>
                         <div>
-                            <input type="submit" name="btn__login" id="submit__login"></input>   
+                            <input type="submit" name="btn__login" id="submit__login" value="je me connecte"></input>   
                             {/* penser à e.preventDefault(); */}
                         </div>
                     </form>
                    
                 </div>
                 <div className="grp-accueil__signup">
-                    Pas encore de compte ?&nbsp;<a href="">Inscrivez-vous</a>
+                    Pas encore de compte ?&nbsp;<a href=""><Link to="/signup">Inscrivez-vous</Link></a>
                 </div>
             </div>
         </div>
