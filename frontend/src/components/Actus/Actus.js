@@ -35,8 +35,7 @@ function Actus() {
                     </div>
                     <div className="publications__texte">Globos latera urbis ait cuncta quod 
                     per familiarium subversasque urbis terga subversasque 
-                    transiturus tamquam latera discurrunt tamquam longius 
-                    transiturus post.
+                    transiturus tamquam latera discurrunt etc. etc.
                     </div>
                     <div className="marge__right"></div>
                 </div>
