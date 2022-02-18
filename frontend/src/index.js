@@ -6,6 +6,9 @@ import Login from './pages/Login/Login'
 import Inscription from './pages/Inscription/Inscription'
 import Error from '../src/components/Error/index'
 import Home from './pages/Home/Home'
+import Profile from './pages/Profile/Profile'
+
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -22,6 +25,10 @@ ReactDOM.render(
 
       <Route exact path="/accueil">
         <Home/>
+      </Route>
+
+      <Route exact path="/profile">
+        <Profile/>
       </Route>
 
       <Route>

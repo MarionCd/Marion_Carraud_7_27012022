@@ -2,7 +2,7 @@
 
 .grp-accueil__connecte{
     content:"";
-    background-color: #AFAFAF;
+    background-color: #D9D9D9;
     display:flex;
     justify-content: space-around;
     color:#162847;
@@ -97,33 +97,80 @@
 
 .statut__btn,
 .statut-a-publier{
-    background-color:#162847;
     width:100%;
     content:"";
 }
+.blocBleu{
+    background-color:#162847;
+}
 
-.statut-a-publier{
+.blocRouge{
+    background-color: #D1515A;   
+}
+
+.statut-a-publier,
+.autres-publications{
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
+    padding-bottom:25px;
+    display:flex;
+    flex-direction:column;
+}
+.statut-a-publier__avatar-text{
     display:flex;
     flex-direction: row;
     justify-content:space-between;
+
 }
 
-.statut-a-publier img{
+.statut-center{
+    width:70%;
+    padding: 3px;
+    display:flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+}
+
+.statut-center__bloc1{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:#fff;
+    font-size:18px;
+}
+.statut-center__bloc2{
+    background-color:#fff;
+    border-radius:50px;
+    padding:3px;
+    font-size:18px;
+
+}
+
+.statut-left{
+    width:88px;
+}
+
+.statut-a-publier .statut-a-publier__avatar-text img{
     padding:25px;
-    width:20%;
+    width:50px;
+    height:50px;
 }
 
-.statut-a-publier input{
-    height:40px;
-    width: 70%;
+.statut-a-publier textarea{
     margin-top:25px;
+    padding:5px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size:18px;
+    resize:vertical;
+    min-height:65px;
+}
+.statut-a-publier__icones{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
 }
 
 .statut__btn{
     text-align:right;
-    margin-bottom:20px;
+   
 }
 
 .statut__btn button{
@@ -131,8 +178,7 @@
     border-radius:50px;
     border:none;
     padding:10px 15px;
-    margin-right:10%;
-    margin-bottom:20px;
+   
     font-size: 18px;
     color:#fff;
    
@@ -144,11 +190,7 @@
     color:#D1515A;
 }
 
-.autres-publications{
-    background-color: #D1515A;
-    display:flex;
-    flex-direction: row;
-}
+
 
 .publications__profil{
     width:20%;
@@ -181,4 +223,36 @@
 }
 .marge__right{
     width:10%;
+}
+
+.reseau__statut--profil{
+    display:flex;
+    flex-direction:column;
+}
+
+.reseau__statut--nom a{
+    padding:0px 25px 25px 25px;
+    color:#fff;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size:18px;
+    text-decoration:none;
+}
+
+.ajout-photo{
+    text-decoration:none;
+}
+
+.commentaire__btn button{
+    background-color:#162847;
+
+}
+
+.blocRouge textarea{
+    width:100%;
+    resize:vertical;
+    min-height:65px;
+}
+
+.statut-right{
+    min-width:10%;
 }
