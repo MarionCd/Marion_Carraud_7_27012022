@@ -14,7 +14,7 @@
 
 .grp-accueil__login-ou-signup{
     content:"";
-    height:300px;
+    height:fit-content;
     background-color:#fff;
     border-radius:25px;
     width:33%;
@@ -76,6 +76,7 @@
     padding:10px 15px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size:22px;
+    text-align: center;
 }
 
 #submit__login:hover{
@@ -91,6 +92,7 @@
     justify-content: center;
     padding-bottom:30px;
     padding-top:22px;
+    margin-top:22px;
 }
 
 

@@ -1,0 +1,52 @@
+#delete-account{
+    color:red;
+
+}
+
+#infos-profil{
+    display:flex;
+    flex-direction: column;
+}
+
+#infos-profil div{
+    display:flex;
+    flex-direction: column;
+    text-align:left;
+    margin-top:10px;
+    margin-bottom:10px;
+    font-size:18px;
+}
+
+#infos-profil input{
+    font-size:18px;
+}
+
+#infos-profil img:hover{
+    opacity:0.6;
+}
+
+.info-modifiable:focus-within{
+    border:#D1515A 1px solid;
+}
+
+.info-modifiable:focus-within label{
+    font-size:14px;
+}
+
+.save__btn{
+    background-color:#D1515A;
+    text-align:center;
+    border-radius:50px;
+    border:none;
+    padding:10px 15px;
+    font-size: 18px;
+    color:#fff;
+    content:"";
+
+}
+
+.save__btn:hover{
+    background-color:#162847 ;
+    color:#fff;
+    cursor:pointer;
+}

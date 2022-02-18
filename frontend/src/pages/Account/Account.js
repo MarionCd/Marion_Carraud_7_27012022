@@ -1,16 +1,16 @@
 import BannerConnecte from '../../components/BannerConnecte/BannerConnecte'
 import Footer from '../../components/Footer/Footer'
-import Account from '../../components/Account/Account'
-import './Profile.css'
+import AccountInformations from '../../components/Account/Account'
+import './Account.css'
 
-function Profile() {
+function Account() {
     return (
         <div>
             <BannerConnecte />
-            <Account/>
+            <AccountInformations />
             <Footer />
         </div>
     )
 }
 
-export default Profile
+export default Account

@@ -45,9 +45,19 @@
     border-radius:100%;
 }
 
-.grp-banner__profil p,
 .grp-banner__vignette-profil{
     cursor:pointer;
+}
+
+#logout{
+    font-size:18px;
+    color:#fff;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-decoration: none;
+}
+
+#logout:hover span{
+    text-decoration:underline;
 }
 
 

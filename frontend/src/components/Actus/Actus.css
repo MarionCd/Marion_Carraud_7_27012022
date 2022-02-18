@@ -2,13 +2,16 @@
 
 .grp-accueil__connecte{
     content:"";
-    background-color: #D9D9D9;
     display:flex;
     justify-content: space-around;
     color:#162847;
     flex-direction:row;
     padding-bottom:30px;
     padding-top:30px;
+
+    background-repeat:repeat;
+    background-size: contain;
+    background-image: url("../../assets/background__actus.jpg");
 }
 .accueil__left,
 .accueil__right{
@@ -95,17 +98,24 @@
     white-space: nowrap;
 }
 
-.statut__btn,
+
 .statut-a-publier{
     width:100%;
     content:"";
+   
 }
 .blocBleu{
     background-color:#162847;
+    box-shadow: 0px 0px 9px 1px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 9px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 9px 1px rgba(0,0,0,0.75);
 }
 
 .blocRouge{
-    background-color: #D1515A;   
+    background-color: #D1515A;  
+    box-shadow: 0px 0px 9px 1px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 9px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 9px 1px rgba(0,0,0,0.75); 
 }
 
 .statut-a-publier,
@@ -170,21 +180,17 @@
 
 .statut__btn{
     text-align:right;
-   
-}
-
-.statut__btn button{
     background-color: #D1515A;
     border-radius:50px;
     border:none;
     padding:10px 15px;
-   
     font-size: 18px;
     color:#fff;
-   
+    content:"";
+    margin-left:30%;
 }
 
-.statut__btn button:hover{
+.statut__btn:hover{
     background-color:#fff;
     cursor:pointer;
     color:#D1515A;
@@ -242,10 +248,24 @@
     text-decoration:none;
 }
 
-.commentaire__btn button{
+.commentaire__btn{
     background-color:#162847;
-
+    text-align:right;
+    border-radius:50px;
+    border:none;
+    padding:10px 15px;
+    font-size: 18px;
+    color:#fff;
+    content:"";
+    margin-left:10%;
 }
+
+.commentaire__btn:hover{
+    background-color:#fff;
+    cursor:pointer;
+    color:#D1515A;
+}
+
 
 .blocRouge textarea{
     width:100%;

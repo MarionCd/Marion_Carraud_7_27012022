@@ -6,7 +6,7 @@ import Login from './pages/Login/Login'
 import Inscription from './pages/Inscription/Inscription'
 import Error from '../src/components/Error/index'
 import Home from './pages/Home/Home'
-import Profile from './pages/Profile/Profile'
+import Account from './pages/Account/Account'
 
 
 
@@ -27,8 +27,8 @@ ReactDOM.render(
         <Home/>
       </Route>
 
-      <Route exact path="/profile">
-        <Profile/>
+      <Route exact path="/account">
+        <Account/>
       </Route>
 
       <Route>

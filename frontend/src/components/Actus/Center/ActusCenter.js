@@ -16,17 +16,11 @@ function ActusCenter() {
                         <div className="statut-left"></div>
                         <div className="statut-center">
                             <div className="statut-center__bloc1">Ajouter à votre publication : &nbsp;</div>
-                            <a href="#" className="ajout-photo"><div className="statut-center__bloc2">📸 </div></a>
+                            <a href="#" className="ajout-photo"><div className="statut-center__bloc2">📸</div></a>
+                            <a href="#" className='ajout-photo'><div className="statut-center__bloc2">😃</div></a>
+                            <button className='statut__btn'>Publier</button>
                         </div>
-                        <div className="statut-right"></div>
-                    </div>
-                    <div className="statut-a-publier__icones">
-                        <div className="statut-left"></div>
-                        <div className="statut-center">
-                            <div className="statut__btn">
-                                <button>Publier</button>
-                            </div>
-                        </div>
+                        
                         <div className="statut-right"></div>
                     </div>
                 </div>
@@ -58,25 +52,18 @@ function ActusCenter() {
                                     <textarea type="text" placeholder="Commenter..." className="statut-center"></textarea>
                                     <div className="statut-right"></div>
                                 </div>
+                                
                                 <div className="statut-a-publier__icones">
                                     <div className="statut-left"></div>
-                                    <div className="statut-center">
+                                    <div className="statut-center">  
                                         <div className="statut-center__bloc1">Ajouter à votre publication : &nbsp;</div>
                                         <a href="#" className='ajout-photo'><div className="statut-center__bloc2">📸 </div></a>
+                                        <a href="#" className='ajout-photo'><div className="statut-center__bloc2">😃</div></a>
+                                        <button className='commentaire__btn'>Commenter</button>
                                     </div>
-                                <div className="statut-right"></div>
+                                    <div className="statut-right"></div>
+                                </div>
                             </div>
-                    
-                    <div className="statut-a-publier__icones">
-                        <div className="statut-left"></div>
-                        <div className="statut-center">
-                            <div className="statut__btn commentaire__btn">
-                                <button>Commenter</button>
-                            </div>
-                        </div>
-                        <div className="statut-right"></div>
-                    </div>
-                </div>
                             
                         </div>
                         <div className="statut-right"></div>
