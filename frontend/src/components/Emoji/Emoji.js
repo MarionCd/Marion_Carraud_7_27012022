@@ -1,23 +1,18 @@
-import React, { useState } from 'react';
-import Picker from 'emoji-picker-react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { EmojiPickerContainer, EmojisContainer } from "./Emojis.styles";
 
-const Emoji = () => {
-  const [chosenEmoji, setChosenEmoji] = useState(null);
-
-  const onEmojiClick = (event, emojiObject) => {
-    setChosenEmoji(emojiObject);
-  };
-
-  return (
-    <div>
-      {chosenEmoji ? (
-        <span>You chose: {chosenEmoji.emoji}</span>
-      ) : (
-        <span>No emoji Chosen</span>
-      )}
-      <Picker onEmojiClick={onEmojiClick} />
-    </div>
-  );
+const Emojis = ({pickEmoji}) =>{
+    return(
+        <EmojisContainer>
+            {
+                <EmojiPickerContainer onEmojiClick={pickEmoji}/>
+            }
+        </EmojisContainer>
+    )
+};
+Emojis.propTypes = {
+    pickEmoji: PropTypes.func
 };
 
-export default Emoji
+export default Emojis
