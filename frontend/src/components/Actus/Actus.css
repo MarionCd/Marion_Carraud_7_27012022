@@ -158,7 +158,7 @@
     width:88px;
 }
 
-.statut-a-publier .statut-a-publier__avatar-text img{
+.statut-a-publier .grp-banner__vignette-profil{
     padding:25px;
     width:50px;
     height:50px;
@@ -276,3 +276,39 @@
 .statut-right{
     min-width:10%;
 }
+
+.parent__ajout-photo{
+    display:inline-block;
+    position:relative;
+    overflow: hidden;
+   
+}
+
+.parent__ajout-photo input[type=file]{
+    left:0;
+    top:0;
+    opacity:0;
+    position:absolute;
+    font-size:90px;
+    cursor:pointer;
+}
+
+.emoji-icon{
+    content: "😃"
+}
+
+.react-emoji{
+    margin-top:20px !important;
+}
+
+.react-emoji-picker--wrapper{
+    height:250px !important;
+}
+/* 
+.react-input-emoji--container{
+    margin-top:20px !important;
+} */
+
+/* .emoji-mart-scroll{
+    height:30px !important;
+} */
