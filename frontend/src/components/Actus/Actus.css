@@ -115,6 +115,7 @@
     -moz-box-shadow: 0px 0px 9px 1px rgba(0,0,0,0.75);
     padding-top:20px;
     padding-bottom:20px;
+   
 }
 
 .blocRouge{
@@ -283,6 +284,7 @@
 
 .statut-right{
     width:10%;
+    position:relative;
 }
 
 .parent__ajout-photo{
@@ -321,6 +323,7 @@
 .publication{
     display:flex;
     flex-direction:column;
+   
 }
 
 .encart-btn{

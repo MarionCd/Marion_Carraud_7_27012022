@@ -36,8 +36,8 @@ function ActusCenter() {
 
     const inputRef = createRef();
     const [message, setMessage] = useState('');
-    const [showEmojis, setShowEmojis ] = useState ('');
-    const [cursorPosition, setCursorPosition] = useState('');
+    const [showEmojis, setShowEmojis ] = useState ();
+    const [cursorPosition, setCursorPosition] = useState();
 
     const pickEmoji = (e, { emoji }) => {
         const ref = inputRef.current;
@@ -82,11 +82,9 @@ function ActusCenter() {
                             <div className="encart-btn">
                                 <button className="statut__btn" onClick={() => validate()}>Publier</button>
                             </div>
-                          { <div className="{`emoji-list ${!showEmojis && 'hidden'}`}">
-                               <Emoji pickEmoji={pickEmoji}/>
 
-                           </div>
-                            }
+                           
+                            
                         </div> 
 
                         <div className="statut-right bouton-publication">
@@ -98,18 +96,12 @@ function ActusCenter() {
                                     <button className="picture-icon">📸</button>
                                     <input type="file" name="upfile" />
                             </div>
+
+                            {showEmojis && <Emoji className="emoji-list" pickEmoji={pickEmoji} />}
                         </div>
-
-                        
-
                     </div>
-
-                  
                 </div>
                
-
-                
-
                 <h2>Ce que votre réseau a écrit</h2> 
             </div>
     )
