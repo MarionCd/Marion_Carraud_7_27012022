@@ -1,10 +1,7 @@
 import React from "react";
-import { createRef, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'; //possibilité de faire des liens
-
-
-// Components
-import Emoji from '../../Emoji/Emoji' // Emojis
+import { useState } from 'react'
+import { Link } from 'react-router-dom';
+import Picker from 'emoji-picker-react';
 
 // Style
 import '../Actus.css';
@@ -13,53 +10,28 @@ import '../Actus.css';
 import photoProfil from '../../../assets/Photo-profil-defaut.png'; //à modifier avec la photo dans la bdd
 
 function ActusCenter() {
-
-    const validate = () => { console.log(message) // récupération de contenu et envoi des données au backend avec axios
-        let post = {
-            id: 3,
-            contenu: message
-        }
-        posts.push(post)
-    };
-    const [posts, setPosts] = useState([
-        {
-            id: 1,
-            contenu: "texte",
-        },
-        {
-            id:2,
-            contenu:"2e texte"
-        }
-    ]);
-
-    const inputRef = createRef();
     const [message, setMessage] = useState();
-    const [commentaire, setCommentaire] = useState();
-    const [showEmojis, setShowEmojis ] = useState ();
-    const [cursorPosition, setCursorPosition] = useState();
+    const [showPicker, setShowPicker] = useState(false);
 
-    const pickEmoji = (e, { emoji }) => {
-        const ref = inputRef.current;
-        ref.focus();
-        const start = message.substring(0, ref.selectionStart);
-        const end = message.substring(ref.selectionStart);
-        const msg = start + emoji + end;
-        setMessage(msg);
-        setCursorPosition(start.length+emoji.length);
+    const onEmojiClick = (e, emojiObject) => { // choix d'un smiley
+      setMessage(start => start + emojiObject.emoji); 
+      setShowPicker(false);
     };
 
     const handleChange = e =>{
         setMessage(e.target.value);
     }
-   
-    const handleShowEmojis = () => {
-        inputRef.current.focus();
-        setShowEmojis(!showEmojis);
+
+    const validate = () => { console.log(message) // récupération de contenu et envoi des données au backend avec axios
+        let post = {
+            id: 3,
+            contenu: message
+        } 
+        posts.push(post)   
+        setMessage()
     };
 
-    useEffect(() => {
-        inputRef.current.selectionEnd = cursorPosition;
-    }, [cursorPosition])
+    const [posts, setPosts] = useState([]);
   
     return (
             <div className='accueil__center'>
@@ -71,7 +43,7 @@ function ActusCenter() {
                         <img src={photoProfil} alt="photo profil" className="grp-banner__vignette-profil statut-left"/>
                         
                         <div className='statut-center publication'>
-                            <textarea type="text" placeholder="Que voulez-vous partager aujourd'hui ?"  value={message} onChange={handleChange} ref={inputRef}></textarea>  
+                            <textarea type="text" placeholder="Que voulez-vous partager aujourd'hui ?" value={message} onChange={handleChange} ></textarea>  
                             <div className="encart-btn">
                                 <button className="statut__btn" onClick={() => validate()}>Publier</button>
                             </div>    
@@ -79,15 +51,15 @@ function ActusCenter() {
 
                         <div className="statut-right bouton-publication">
                             <div className="parent__ajout-photo">
-                                <button className="picture-icon" onClick={handleShowEmojis}>😃</button>
+                                <button className="picture-icon" onClick={() => setShowPicker(val => !val)} >😃</button>
                             </div>
 
                             <div className="parent__ajout-photo">
                                     <button className="picture-icon">📸</button>
                                     <input type="file" name="upfile" />
                             </div>
-
-                            {showEmojis && <Emoji className="emoji-list" pickEmoji={pickEmoji} />}
+                            {showPicker && <Picker className="emoji-list" onEmojiClick={onEmojiClick} />}
+                          
                         </div>
                     </div>
                 </div>
@@ -113,7 +85,7 @@ function ActusCenter() {
                     
                                     
                                     <div className="statut-center publication">
-                                        <textarea type="text" placeholder="Commenter la publication"  value={commentaire} onChange={handleChange} ref={inputRef}></textarea>
+                                        <textarea type="text" placeholder="Commenter la publication"  ></textarea>
                                         <div className="encart-btn">
                                             <button className="commentaire__btn" onClick={() => validate()}>Commenter</button>
                                         </div>
@@ -121,7 +93,7 @@ function ActusCenter() {
 
                                     <div className="statut-right bouton-publication">
                                         <div className="parent__ajout-photo">
-                                            <button className="picture-icon" onClick={handleShowEmojis}>😃</button>
+                                            <button className="picture-icon" >😃</button>
                                         </div>
 
                                         <div className="parent__ajout-photo">
@@ -129,7 +101,7 @@ function ActusCenter() {
                                             <input type="file" name="upfile" />
                                         </div>
 
-                                        {showEmojis && <Emoji className="emoji-list" pickEmoji={pickEmoji} />}
+                                        {/* {showEmojis && <Emoji className="emoji-list" pickEmoji={pickEmoji} />} */}
                                     </div>
                                 </div>
                                 
