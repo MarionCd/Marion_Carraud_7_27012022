@@ -73,11 +73,11 @@ function ActusCenter() {
 
                         <div className="statut-right bouton-publication">
                             <div className="parent__ajout-photo">
-                                <button className="picture-icon" onClick={() => setShowPicker(val => !val)} >😃</button>
+                                <button className="picture-icon" onClick={() => setShowPicker(val => !val)} title="ajouter un smiley" >😃</button>
                             </div>
 
                             <div className="parent__ajout-photo">
-                                    <button className="picture-icon" >📸</button>
+                                    <button className="picture-icon" title="ajouter une photo" >📸</button>
                                     <input type="file" name="upfile" accept=".jpeg,.jpg,.gif" />
                             </div>
                             {showPicker && <Picker className="emoji-list" onEmojiClick={onEmojiClick} />}
@@ -119,11 +119,11 @@ function ActusCenter() {
 
                                     <div className="statut-right bouton-publication">
                                         <div className="parent__ajout-photo">
-                                            <button className="picture-icon" onClick={() => setShowPickerComment(val => !val)}>😃</button>
+                                            <button className="picture-icon" onClick={() => setShowPickerComment(val => !val)} title="ajouter un smiley">😃</button>
                                         </div>
 
                                         <div className="parent__ajout-photo">
-                                            <button className="picture-icon">📸</button>
+                                            <button className="picture-icon" title="ajouter une">📸</button>
                                             <input type="file" name="upfile" accept=".jpeg,.jpg,.gif" />
                                         </div>
 

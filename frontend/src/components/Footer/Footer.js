@@ -23,7 +23,7 @@ function Footer(){
             
             <div className="Footer__secondary">
                 <div>
-                    <p>© Copyright 2021 - 2042 | Openclassrooms by Openclassrooms | All Rights Reserved | Powered </p>
+                    <p>© Copyright 2021 - 2042 | Openclassrooms by Openclassrooms | All Rights Reserved | Powered by Connect-e </p>
                 </div>
             </div>
         </footer>

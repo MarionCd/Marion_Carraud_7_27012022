@@ -1,20 +1,26 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const sauce = require('./models/Sauce');
-const sauceRoutes = require('./routes/sauce');
-const userRoutes = require('./routes/user');
-const bodyParser = require('body-parser'); // c'est ce qui manquait : sa déclaration préalable !
 const path = require('path');
 
-var helmet = require('helmet'); // sécurité conseillé par express
+// const mongoose = require('mongoose');
+
+// routes
+
+const signupRoutes = require('./routes/signup');
+const loginRoutes = require('./routes/login');
+const userRoutes = require('./routes/user');
+const postRoutes = require('./routes/post');
+
+// const sauce = require('./models/Sauce');
+
+var helmet = require('helmet'); // sécurité
 
 const app = express();
 
-mongoose.connect(process.env.TOP_SECRET, //dotenv
-    { useNewUrlParser: true,
-        useUnifiedTopology: true })
-    .then(() => console.log('Connexion à MongoDB réussie '))
-    .catch(() => console.log('Connexion à MongoDB échouée !'));
+// mongoose.connect(process.env.TOP_SECRET, //dotenv
+//     { useNewUrlParser: true,
+//         useUnifiedTopology: true })
+//     .then(() => console.log('Connexion à MongoDB réussie '))
+//     .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -23,7 +29,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(bodyParser.json()); //c'est ce qu'il manquait
+app.use(bodyParser.json()); 
 app.use(express.static('images'));
 
 app.use(
@@ -34,7 +40,9 @@ app.use(
 
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
-app.use('/api/sauces', sauceRoutes);
-app.use('/api/auth', userRoutes);
+app.use('/api/signup', signupRoutes);
+app.use('/api/login', loginRoutes);
+app.use('/api/account', userRoutes);
+app.use('/api/posts', postRoutes);
 
 module.exports = app;
