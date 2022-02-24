@@ -1,0 +1,294 @@
+/**********************Arrière-plan*******************/
+
+.grp-accueil__connecte{
+    content:"";
+    display:flex;
+    justify-content: space-around;
+    color:#162847;
+    flex-direction:row;
+    padding-bottom:30px;
+    padding-top:30px;
+
+    background-repeat:repeat;
+    background-size: contain;
+    background-image: url("../../assets/background__actus.jpg");
+}
+
+
+/********************** Organisation de la page en 3 divisions***********************/
+
+.accueil__left,
+.accueil__right{
+    width:20%;
+    margin-right:10px;
+    margin-left:10px;
+}
+
+/*********************************************** Bloc gauche **********/
+.accueil__left{
+    margin-top:30px;
+}
+.accueil__left ul{
+    list-style: none;
+}
+.accueil__left ul li{
+    padding-bottom:10px;
+    font-size:22px;
+}
+
+.accueil__left a{
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+.accueil__left a:hover{
+    font-weight: 600;
+}
+
+/********************************************** Bloc droite : actualités **********/
+
+.accueil__right h2{
+    text-align: center;
+}
+
+
+.accueil__right{
+    display:flex;
+    flex-direction: column;
+}
+
+.image-actu1,
+.image-actu2,
+.image-actu3,
+.image-actu4{
+    background-size: cover;
+    width:100%;
+    height:150px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.image-actu1{
+    background-image: url("../../assets/Actu1.jpg");   
+}
+
+.image-actu2{
+    background-image: url("../../assets/Actu2.jpg");   
+}
+
+.image-actu3{
+    background-image: url("../../assets/Actu3.jpg");   
+}
+
+.image-actu4{
+    background-image: url("../../assets/Actu4.jpg");   
+}
+
+.titre-actu{
+    background-color:#fff;
+    text-align: center;
+    padding:5px;
+    font-size:18px;
+    margin-bottom:20px;
+    text-overflow: ellipsis;
+    overflow:hidden;
+    white-space: nowrap;
+}
+
+/*************************************** Bloc central *******************/
+
+.accueil__center{
+    width:70%;
+    border-radius:25px;
+    content:"";
+}
+
+.statut-a-publier{
+    width:100%;
+    content:"";
+}
+
+.blocBleu,
+.blocRouge{
+    box-shadow: 0px 0px 9px 1px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 9px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 9px 1px rgba(0,0,0,0.75);
+    padding-top:20px;
+    padding-bottom:20px;
+}
+
+.blocBleu{
+    background-color:#162847;
+}
+
+.blocRouge{
+    background-color: #D1515A;  
+    margin-top:10px;
+}
+
+.statut-a-publier,
+.autres-publications{
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    padding-bottom:25px;
+    display:flex;
+    flex-direction:column;
+}
+.statut-a-publier__avatar-text{
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+}
+
+.statut-center{
+    width:80%;
+    padding: 3px;
+    display:flex;
+    flex-direction: row;
+}
+
+.statut-left{
+    width:10%;
+}
+
+.statut-a-publier .grp-banner__vignette-profil{
+    padding:25px;
+    width:50px;
+    height:50px; 
+}
+
+.statut-a-publier textarea,
+.publi-ami{
+    padding:8px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size:18px;
+    resize:vertical;
+    min-height:65px;
+    width:95%;
+    margin-right:10px;
+    margin-left:10px;
+    border-radius:10px;
+}
+.statut-a-publier__icones{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+}
+
+.statut__btn{
+    text-align:right;
+    background-color: #D1515A;
+    border-radius:50px;
+    border:none;
+    padding:10px 15px;
+    font-size: 18px;
+    color:#fff;
+    content:"";
+    width:fit-content;
+    position:absolute;
+    bottom:0;
+    right:0;
+}
+
+.statut__btn:hover{
+    background-color:#fff;
+    cursor:pointer;
+    color:#D1515A;
+}
+
+
+.commentaire__btn{
+    background-color:#162847;
+    text-align:right;
+    border-radius:50px;
+    border:none;
+    padding:10px 15px;
+    font-size: 18px;
+    color:#fff;
+    content:"";
+    right:0;
+    position:absolute;
+    margin-top:5px;
+}
+
+.commentaire__btn:hover{
+    background-color:#fff;
+    cursor:pointer;
+    color:#D1515A;
+}
+
+
+/* .blocRouge textarea{
+    width:100%;
+    resize:vertical;
+    min-height:65px;
+} */
+
+.statut-right{
+    width:10%;
+    position:relative;
+}
+
+.parent__ajout-photo{
+    display:inline-block;
+    position:relative;
+    overflow: hidden;
+    margin-bottom:4px;
+}
+
+.parent__ajout-photo input[type=file]{
+    left:0;
+    top:0;
+    opacity:0;
+    position:absolute;
+    font-size:90px;
+    cursor:pointer;
+}
+
+.picture-icon{
+    background-color: #fff;
+    border: 1px solid #000;
+    padding: 3px;
+    border-radius: 100%;
+    font-size:18px;
+}
+.parent__ajout-photo button{
+    cursor:pointer;
+}
+
+.bouton-publication{
+    display:flex;
+    flex-direction: column;
+    padding-top:7px;
+}
+
+.publication{
+    display:flex;
+    flex-direction:column;  
+}
+
+.encart-btn{
+    position:relative;
+    height:50px;
+}
+
+
+/************Bloc rouge***********/
+
+.auteur{
+    padding:5px;
+    margin-top:-20px;
+    text-align: center;
+    color:#fff;
+}
+
+.publi-ami{
+    background-color:#fff;
+    border:1px #162847 solid;
+}
+
+.poubelle{
+    font-weight:bold;
+    font-size:24px;
+    padding:0px 8px;
+}

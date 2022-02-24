@@ -1,0 +1,49 @@
+.Footer__main{
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+    background-color:#162847;
+    color:#fff;
+    padding:25px;
+}
+
+.Footer__logo{
+    max-width:200px;
+    position:absolute;
+    right:0;
+}
+
+.Footer__line{
+    content:'';
+    background-color: #D1515A;
+    height:8px;
+    width: 80%;
+    right:0;
+    margin-top:40px;
+    margin-bottom:10px;
+    border-radius:25px;
+    animation-name: apparition-ligne;
+    animation-duration: 2000ms;
+    position:absolute;
+}
+
+.Footer__bloc-logo{
+    width:20%;
+    position:relative;
+}
+
+.Footer__secondary{
+    text-align: center;
+}
+
+@keyframes apparition-ligne {
+    0% { 
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scaleX(1);
+    
+    }
+}

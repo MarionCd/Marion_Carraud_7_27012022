@@ -1,0 +1,65 @@
+.grp-banner {
+    color: black;
+    text-align: left;
+    padding: 32px;
+    background-color: #162847;
+    height:90px;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+}
+
+
+.grp-logo{
+    max-height:50px;
+}
+
+.grp-banner__line{
+    content:'';
+    background-color: #D1515A;
+    height:10px;
+    width:120%;
+    margin-bottom:10px;
+    margin-top:15px;
+    border-radius:25px;
+    animation-name: apparition-ligne;
+    animation-duration: 2000ms;
+}
+
+.grp-banner__slogan{
+    color: #ffffff;
+    font-size:18px;
+    font-style: italic;
+}
+
+.grp-banner__citation{
+    color: #ffffff;
+    font-size:18px;
+}
+.grp-banner__citation h1{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size:22px;
+    font-weight: 500;
+    padding:0px;
+    margin:0px;
+
+}
+
+.grp-banner__citation p{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+@keyframes apparition-ligne {
+    0% { 
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scaleX(1);
+    
+    }
+}
+
+
