@@ -1,6 +1,7 @@
 const bcrypt = require ('bcrypt');
 const User = require('../models/User'); 
 const jwt = require('jsonwebtoken');
+const CLEF_SECRETE = process.env.CLEF_SECRETE;
 
 /*************** Connexion client ****************/
 exports.login = (req, res, next) => {
@@ -20,7 +21,7 @@ exports.login = (req, res, next) => {
             userId: user._id,
             token: jwt.sign(
               { userId: user._id },
-              'RANDOM_TOKEN_SECRET',
+              CLEF_SECRETE,
               { expiresIn: '24h' } // l'utilisateur devra se reconnecter au bout de 24h
             )
           });

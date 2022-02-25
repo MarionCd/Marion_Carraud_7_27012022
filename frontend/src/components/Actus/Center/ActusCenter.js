@@ -37,6 +37,7 @@ function ActusCenter() {
     const handleChangeComment = (e) =>{
         setCommentaire(e.target.value);
     };
+    
 
     const validate = () => { 
         let post = {
@@ -49,7 +50,20 @@ function ActusCenter() {
         document.getElementById('statut-publication').value = '';
     }
 
+    const validateComment = () => { 
+        let comment = {
+            id: 1,
+            contenu: commentaire,
+            author: auteur
+        }
+        comments.push(comment)
+        setCommentaire()
+        document.getElementById('commentaire-sous-publi').value = '';
+    }
+
     const [posts, setPosts] = useState([]);
+
+    const [comments, setComments] = useState([]);
   
     return (
             <div className='accueil__center'>
@@ -76,10 +90,10 @@ function ActusCenter() {
                                 <button className="picture-icon" onClick={() => setShowPicker(val => !val)} title="ajouter un smiley" >😃</button>
                             </div>
 
-                            <div className="parent__ajout-photo">
+                            {/* <div className="parent__ajout-photo">
                                     <button className="picture-icon" title="ajouter une photo" >📸</button>
                                     <input type="file" name="upfile" accept=".jpeg,.jpg,.gif" />
-                            </div>
+                            </div> */}
                             {showPicker && <Picker className="emoji-list" onEmojiClick={onEmojiClick} />}
                           
                         </div>
@@ -101,34 +115,61 @@ function ActusCenter() {
                             
                             <div className='statut-center publication'>
                                 <div className="publi-ami" >{post.contenu}</div>  
+
+                                <div>
+                                    {comments.map(comment => 
+                                    <div className="commentaire-publie">
+                                        <div className="publi-ami__commentaire statut-a-publier__avatar-text">
+                                            <div>
+                                                <img src={photoProfil} alt="photo profil" className="grp-banner__vignette-profil statut-left"/>
+                                                <div className="auteur">
+                                                    <span className="auteur-prenom">Prénom</span> <span className="auteur-nom">Nom</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div className="statut-center publication">
+                                                <div className="publi-ami">{comment.contenu}</div>
+                                            </div>
+
+                                            <div className="statut-right bouton-publication">
+                                                <div className="parent__ajout-photo">
+                                                    <button className="picture-icon poubelle">🗑</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    )}
+                                </div>
                                 
-                                <div className="publi-ami__commentaire statut-a-publier__avatar-text">
-                                    <div>
-                                        <img src={photoProfil} alt="photo profil" className="grp-banner__vignette-profil statut-left"/>
-                                        <div className="auteur">
-                                            <span className="auteur-prenom">Prénom</span> <span className="auteur-nom">Nom</span>
+                                <div className="commentaire-a-publier">
+                                    <div className="publi-ami__commentaire statut-a-publier__avatar-text">
+                                        <div>
+                                            <img src={photoProfil} alt="photo profil" className="grp-banner__vignette-profil statut-left"/>
+                                            <div className="auteur">
+                                                <span className="auteur-prenom">Prénom</span> <span className="auteur-nom">Nom</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    
-                                    <div className="statut-center publication">
-                                        <textarea type="text" placeholder="Commenter la publication" value={commentaire} onChange={handleChangeComment} ></textarea>
-                                        <div className="encart-btn">
-                                            <button className="commentaire__btn" >Commenter</button>
-                                        </div>
-                                    </div>
-
-                                    <div className="statut-right bouton-publication">
-                                        <div className="parent__ajout-photo">
-                                            <button className="picture-icon" onClick={() => setShowPickerComment(val => !val)} title="ajouter un smiley">😃</button>
+                                        
+                                        <div className="statut-center publication">
+                                            <textarea id="commentaire-sous-publi" type="text" placeholder="Commenter la publication" value={commentaire} onChange={handleChangeComment} ></textarea>
+                                            <div className="encart-btn">
+                                                <button className="commentaire__btn" onClick={() => validateComment()} >Commenter</button>
+                                            </div>
                                         </div>
 
-                                        <div className="parent__ajout-photo">
-                                            <button className="picture-icon" title="ajouter une">📸</button>
-                                            <input type="file" name="upfile" accept=".jpeg,.jpg,.gif" />
-                                        </div>
+                                        <div className="statut-right bouton-publication">
+                                            <div className="parent__ajout-photo">
+                                                <button className="picture-icon" onClick={() => setShowPickerComment(val => !val)} title="ajouter un smiley">😃</button>
+                                            </div>
 
-                                        {showPickerComment && <Picker className="emoji-list" onEmojiClick={onEmojiClickComment} />}
-                                        {/* {showEmojis && <Emoji className="emoji-list" pickEmoji={pickEmoji} />} */}
+                                            {/* <div className="parent__ajout-photo">
+                                                <button className="picture-icon" title="ajouter une">📸</button>
+                                                <input type="file" name="upfile" accept=".jpeg,.jpg,.gif" />
+                                            </div> */}
+
+                                            {showPickerComment && <Picker className="emoji-list" onEmojiClick={onEmojiClickComment} />}
+                                            {/* {showEmojis && <Emoji className="emoji-list" pickEmoji={pickEmoji} />} */}
+                                        </div>
                                     </div>
                                 </div>
                                 
