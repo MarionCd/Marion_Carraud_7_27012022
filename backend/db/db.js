@@ -1,3 +1,8 @@
-import {Sequelize} from "sequelize";
+const Sequelize = require('sequelize');
+const TOP_SECRET = process.env.TOP_SECRET;
 
-export default new Sequelize('crud', 'root', 'mdp', {dialect: 'mysql', host:'localhost'})
+const sequelize = new Sequelize('groupomania', 'root', `${TOP_SECRET}`,
+    {dialect: 'mysql', host:'localhost'}
+);
+
+module.exports = sequelize;

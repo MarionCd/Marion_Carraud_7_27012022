@@ -1,13 +1,27 @@
-// a supprimer ?
+const sequelize = require('sequelize');
+const db = require('../db/db');
 
-const mongoose = require('mongoose');
-const uniqueValidator = require('mongoose-unique-validator');
+const {DataTypes} = sequelize;
 
-const userSchema = mongoose.Schema({
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
+const User = db.define('user', {
+  email: { 
+    type: DataTypes.STRING, 
+    required: false, 
+    unique: true
+  },
+  password: { 
+    type: DataTypes.STRING, 
+    required: true 
+  },
+  name: { 
+    type: DataTypes.STRING, 
+    required: true, 
+  },
+  lastname: { 
+    type: DataTypes.STRING, 
+    required: true, 
+  }
+  
 });
 
-userSchema.plugin(uniqueValidator);
-
-module.exports = mongoose.model('User', userSchema);
+module.exports = User;
