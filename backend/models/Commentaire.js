@@ -4,10 +4,10 @@ const db = require('../db/db');
 const {DataTypes} = sequelize;
 
 const Commentaire = db.define('comment', {
-    id: {
-        type: DataTypes.STRING,
-        required:true
-    },
+    // id: {
+    //     type: DataTypes.STRING,
+    //     required:true
+    // },
     author: {
         type:DataTypes.STRING,
         required:true
