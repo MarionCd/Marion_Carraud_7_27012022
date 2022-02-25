@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from 'react'
+import {createRef, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import Picker from 'emoji-picker-react';
 
@@ -12,6 +12,7 @@ import photoProfil from '../../../assets/Photo-profil-defaut.png'; //à modifier
 function ActusCenter() {
     const prenom = "Prénom"
     const nom = "Nom"
+    // const divRef = createRef() 
 
     const [message, setMessage] = useState();
     const [commentaire, setCommentaire] = useState();
@@ -21,7 +22,9 @@ function ActusCenter() {
     const auteur = prenom+" "+nom;
 
     const onEmojiClick = (e, emojiObject) => { // choix d'un smiley
-      setMessage(prevInput => prevInput + emojiObject.emoji);
+        // myRefname.current.focus();
+        
+        setMessage(prevInput => prevInput + emojiObject.emoji);
       setShowPicker(false);
     };
 
@@ -29,15 +32,18 @@ function ActusCenter() {
         setMessage(e.target.value);
     };
 
-    const onEmojiClickComment = (e, emojiObject) => { // choix d'un smiley
-        setCommentaire(start => start + emojiObject.emoji);
-        setShowPickerComment(false);
-    };
+
+
+    // const onEmojiClickComment = (e, emojiObject) => { // choix d'un smiley
+    //     setCommentaire(start => start + emojiObject.emoji);
+        
+    //     setShowPickerComment(false);
+    // };
 
     const handleChangeComment = (e) =>{
-        setCommentaire(e.target.value);
+        setCommentaire(e.target.value); 
     };
-    
+
 
     const validate = () => { 
         let post = {
@@ -94,7 +100,7 @@ function ActusCenter() {
                                     <button className="picture-icon" title="ajouter une photo" >📸</button>
                                     <input type="file" name="upfile" accept=".jpeg,.jpg,.gif" />
                             </div> */}
-                            {showPicker && <Picker className="emoji-list" onEmojiClick={onEmojiClick} />}
+                            {showPicker && <Picker className="emoji-list" onEmojiClick={onEmojiClick}  />}
                           
                         </div>
                     </div>
@@ -159,7 +165,7 @@ function ActusCenter() {
 
                                         <div className="statut-right bouton-publication">
                                             <div className="parent__ajout-photo">
-                                                <button className="picture-icon" onClick={() => setShowPickerComment(val => !val)} title="ajouter un smiley">😃</button>
+                                                <button className="picture-icon" onClick={() => setShowPicker(val => !val)} title="ajouter un smiley" >😃</button>
                                             </div>
 
                                             {/* <div className="parent__ajout-photo">
@@ -167,7 +173,7 @@ function ActusCenter() {
                                                 <input type="file" name="upfile" accept=".jpeg,.jpg,.gif" />
                                             </div> */}
 
-                                            {showPickerComment && <Picker className="emoji-list" onEmojiClick={onEmojiClickComment} />}
+                                            {showPicker && <Picker className="emoji-list" onEmojiClick={onEmojiClick}/>}
                                             {/* {showEmojis && <Emoji className="emoji-list" pickEmoji={pickEmoji} />} */}
                                         </div>
                                     </div>
