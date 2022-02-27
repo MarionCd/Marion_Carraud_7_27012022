@@ -16,7 +16,6 @@ const Commentaire = db.define('comment', {
         type: DataTypes.STRING,
         required:true
     }
- 
   
 });
 

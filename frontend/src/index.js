@@ -1,42 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Login from './pages/Login/Login'
-import Inscription from './pages/Inscription/Inscription'
-import Error from '../src/components/Error/index'
-import Home from './pages/Home/Home'
-import Account from './pages/Account/Account'
+import React from "react";
+import ReactDOM from "react-dom";
+import {BrowserRouter as Router} from "react-router-dom";
+import "./index.css";
+import App from "./app";
 
 
-
-ReactDOM.render(
-  <React.StrictMode>
-  
+const app = (
     <Router>
-      <Switch>
-      <Route exact path="/">
-        <Login />
-      </Route>
-
-      <Route exact path="/signup">
-        <Inscription/>
-      </Route>
-
-      <Route exact path="/accueil">
-        <Home/>
-      </Route>
-
-      <Route exact path="/account">
-        <Account/>
-      </Route>
-
-      <Route>
-          <Error/>
-      </Route>
-      </Switch>
+        <App />
     </Router>
-  </React.StrictMode>,
-  document.getElementById('root')
 );
 
+ReactDOM.render(app, document.getElementById("root"));
