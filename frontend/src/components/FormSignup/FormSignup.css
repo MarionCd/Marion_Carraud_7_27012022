@@ -57,3 +57,7 @@
 .link__login{
     text-align: center;
 }
+
+small {
+    margin-top:-10px;
+}

@@ -21,8 +21,11 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json()); 
 app.use(express.static('images'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use(
+
+app.use( 
     helmet({
         crossOriginResourcePolicy: false,
     })

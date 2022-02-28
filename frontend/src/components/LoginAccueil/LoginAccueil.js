@@ -17,10 +17,10 @@ function LoginAccueil() {
                     <form className="grp-accueil__login--form">
                         <h2>{titreLogin}</h2>
                         <div>
-                            <input  type="email" name="email" id="email__login" required placeholder="Adresse email" onChange={(e) => setEmail(e.target.value)}></input>
+                            <input  type="email" name="email" id="email__login" required placeholder="Adresse email" defaultValue="" onChange={(e) => setEmail(e.target.value)}></input>
                         </div>
                         <div>
-                            <input type="password" placeholder="Mot de passe" id="mdp__login" onChange={(e) => setPassword(e.target.value)}></input>
+                            <input type="password" placeholder="Mot de passe" id="mdp__login" defaultValue="" onChange={(e) => setPassword(e.target.value)}></input>
                         </div>
                         <div>
                             <input name="btn__login" id="submit__login" value="je me connecte"  onClick={() => validate()}></input>   
