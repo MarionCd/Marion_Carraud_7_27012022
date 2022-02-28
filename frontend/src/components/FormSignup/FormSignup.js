@@ -1,5 +1,5 @@
 import './FormSignup.css'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios';
 
@@ -36,8 +36,10 @@ function FormSignup(){
             axios
                 .post("http://localhost:8080/api/signup",  user)
                 .then(res => {
-                    console.log(res);
+                    console.log(res)
                     console.log("utilisateur enregistré")
+                    window.alert( "Bienvenue ! Vous pouvez vous connecter maintenant")
+                    window.location = '/';
                 })
                 .catch(() => {console.log("problème envoi au serveur")})
             
