@@ -1,29 +1,65 @@
 import './LoginAccueil.css'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-
+import axios from 'axios';
+ 
 function LoginAccueil() {
     const titreLogin = "Connectez-vous"
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
-    const validate = () => { console.log(email) // récupération de l'email et password et envoi des données au backend avec axios
-         console.log(password)}
+    
+    const validate = () => { // récupération de l'email et password et envoi des données au backend avec axios
+        
+        const user = {
+            email: email,
+            password: password,
+        };
+
+        axios
+            .post("http://localhost:8080/api/login",  user)
+            .then(res => {
+                console.log(res)
+                console.log("utilisateur connecté")
+                window.alert( "Bienvenue !")
+                window.location = '/accueil';
+            })
+            .catch(() => {console.log("problème envoi au serveur")})
+    }
 
     return (
         <div className='grp-accueil'>
             <div className="grp-accueil__login-ou-signup">
                 <div className="grp-accueil__login">
-
                     <form className="grp-accueil__login--form">
                         <h2>{titreLogin}</h2>
                         <div>
-                            <input  type="email" name="email" id="email__login" required placeholder="Adresse email" defaultValue="" onChange={(e) => setEmail(e.target.value)}></input>
+                            <input  
+                                type="email" 
+                                name="email" 
+                                id="email__login" 
+                                placeholder="Adresse email" 
+                                defaultValue="" 
+                                required
+                                onChange={(e) => setEmail(e.target.value)}>
+                            </input>
                         </div>
                         <div>
-                            <input type="password" placeholder="Mot de passe" id="mdp__login" defaultValue="" onChange={(e) => setPassword(e.target.value)}></input>
+                            <input 
+                                type="password"
+                                placeholder="Mot de passe"
+                                id="mdp__login"
+                                defaultValue=""
+                                required
+                                onChange={(e) => setPassword(e.target.value)}>
+                            </input>
                         </div>
                         <div>
-                            <input name="btn__login" id="submit__login" value="je me connecte"  onClick={() => validate()}></input>   
+                            <input 
+                                name="btn__login" 
+                                id="submit__login" 
+                                value="Je me connecte"  
+                                onClick={() => validate()}>
+                            </input>   
                         </div>
                     </form>
                    

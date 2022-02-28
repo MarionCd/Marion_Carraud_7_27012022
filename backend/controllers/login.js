@@ -2,7 +2,7 @@ const bcrypt = require ('bcrypt');
 const User = require('../models/User'); 
 const jwt = require('jsonwebtoken');
 const CLEF_SECRETE = process.env.CLEF_SECRETE;
-
+ 
 /*************** Connexion client ****************/
 exports.login = (req, res, next) => {
   User

@@ -11,7 +11,7 @@ import { Contexte } from './utils/context'
 
 const App = () => {
     const { userId, token, account, login, logout } = useAuth();
-
+ 
     if (token) {
             <Switch>
                 <Route exact path="/accueil"><Home/></Route>

@@ -3,7 +3,7 @@ const Post = require('../models/Post');
 const Commentaire = require ('../models/Commentaire')
 
 /***** ajout d'une publication  */
-
+ 
 exports.addPost = (req, res, next) => {
 //   const newPost = await Post.create({
 //     id: "test",
