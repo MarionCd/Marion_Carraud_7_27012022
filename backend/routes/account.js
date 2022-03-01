@@ -3,7 +3,7 @@ const router = express.Router();
 const auth = require("../middleware/auth");
 const accountCtrl = require('../controllers/account');
  
-// router.get("/:userId", auth, accountCtrl.getUserProfile);
-// router.delete("/:userId", auth, accountCtrl.deleteUserProfile);
+router.get("/account/:userId", auth, accountCtrl.getAccount);
+router.delete("/account/:userId", auth, accountCtrl.deleteAccount);
 
-module.exports = router;
+module.exports = router;  

@@ -15,12 +15,13 @@ function LoginAccueil() {
 
     const validate = async () => { // récupération de l'email et password et envoi des données au backend avec axios
         const user = {
+                   
                     email: email,
                     password: password,
                 };
          
                 await axios
-                    .post("http://localhost:8080/api/login",  user)
+                    .post("http://localhost:8080/api/login/",  user)
                     .then((res) => {
                         if (res.data.error) {
                             console.log(res.data.error)
@@ -29,8 +30,8 @@ function LoginAccueil() {
                             localStorage.clear();
                             window.localStorage.setItem("userToken", JSON.stringify(res.data.token));
                             window.localStorage.setItem("userId", JSON.stringify(res.data.userId));
-                            setIsAuthenticated(true);
-                                  
+                            setIsAuthenticated(true);       
+                            console.log(res.data)
                             window.alert('félicitations !')
                             window.location = ("/accueil")
                         }

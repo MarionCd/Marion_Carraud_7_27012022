@@ -23,7 +23,7 @@ exports.login = (req, res, next) => {
               { userId: user._id },
               CLEF_SECRETE,
               { expiresIn: '24h' } // l'utilisateur devra se reconnecter au bout de 24h
-            )
+            ), 
           })
         })  
     .catch(error => res.status(500).json({ error }));
