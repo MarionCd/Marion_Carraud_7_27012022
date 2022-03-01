@@ -1,6 +1,6 @@
+import { Link } from 'react-router-dom'
 import logo from '../../assets/icon-left-font-monochrome-white.svg'
 import './Banner.css'
-import { Link } from 'react-router-dom'
 
 function Banner() {
     const slogan = "La détente au service de l'équipe"
@@ -8,7 +8,12 @@ function Banner() {
     return (
         <div className='grp-banner'>
             <div className="grp-banner__logo-bloc">
-            <Link to="/"><img src={logo} alt='Groupomania' className='grp-logo' /></Link>
+                <Link to="/">
+                    <img 
+                        className='grp-logo'
+                        src={logo} 
+                        alt='Groupomania'  />
+                </Link>
                 <div className="grp-banner__line"></div>
                 <div className="grp-banner__slogan">{slogan}</div>
             </div>
@@ -19,7 +24,7 @@ function Banner() {
                 </div>
             </div>
         </div>
-    )
+    ) 
 }
 
 export default Banner

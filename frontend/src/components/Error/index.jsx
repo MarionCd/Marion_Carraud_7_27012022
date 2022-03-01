@@ -10,10 +10,8 @@ function Error() {
         <div className='grp-accueil'>
             <div className="Msg__error-404">
                 <p> Cette page n'existe pas ! 😢</p>
-                <a href=""><Link to="/">Revenir à la page d'accueil</Link></a>
+               <Link to="/">Revenir à la page d'accueil</Link>
             </div> 
-           
-           
         </div>
         <Footer />
     </div>

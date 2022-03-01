@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import photoProfil from '../../assets/Photo-profil-defaut.png'
 import { useState } from 'react'
 
-
-
 function Account() {
    
     const surname = "Prénom"
@@ -46,14 +44,7 @@ function Account() {
                             <button className="save__btn" type="submit" onClick={() => validate()} >Enregistrer mes modifications</button>
                         </div>
                     </form>
-                    
-
-
                 </div>
-
-
-
-
 
                 <div className="grp-accueil__signup">
                     <a href="#" id="delete-account">❌ Supprimer mon compte définitivement ❌</a>

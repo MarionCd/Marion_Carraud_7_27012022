@@ -1,38 +1,48 @@
 import './LoginAccueil.css'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
 import axios from 'axios';
-import React, { useContext } from "react";
-import { Contexte } from '../../utils/context';
+import React, { useContext, useEffect, useState } from 'react';
+import Auth from "../../utils/context";  
+import { useHistory } from 'react-router-dom';
 
-// import { useHttpRequest } from "../../utils/request";
- 
 function LoginAccueil() {
     const titreLogin = "Connectez-vous"
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
-    const auth = useContext(Contexte);
+    const {isAuthenticated, setIsAuthenticated} = useContext(Auth);
+    
+    const history = useHistory()
 
-    const validate = () => { // récupération de l'email et password et envoi des données au backend avec axios
+    const validate = async () => { // récupération de l'email et password et envoi des données au backend avec axios
         
         const user = {
             email: email,
             password: password,
         };
 
-        axios
+        await axios
             .post("http://localhost:8080/api/login",  user)
-            .then(res => { 
-                console.log(res)
-                console.log("utilisateur connecté")
-        
-                auth.login(res.data.userId, res.data.token, res.data.account);
-                window.alert( "Bienvenue !")
-                window.location = '/accueil';
+            .then((res) => {
+                if (res.data.error) {
+                    console.log(res.data.error)
+                } else {
+                    localStorage.clear();
+                    window.localStorage.setItem("userToken", JSON.stringify(res.data.token));
+                    window.localStorage.setItem("userId", JSON.stringify(res.data.userId));
+                    setIsAuthenticated(true);
+                    window.location = ("/accueil")
+                }
             })
             .catch(() => {console.log("problème envoi au serveur")})
     }
+    useEffect(() => {
 
+        if (isAuthenticated) {
+
+            history.replace("/");
+        }
+    }, [history, isAuthenticated]);
+   
     return (
         <div className='grp-accueil'>
             <div className="grp-accueil__login-ou-signup">
@@ -61,19 +71,14 @@ function LoginAccueil() {
                             </input>
                         </div>
                         <div>
-                            <input 
-                                name="btn__login" 
-                                id="submit__login" 
-                                value="Je me connecte"  
-                                onClick={() => validate()}>
-                            </input>   
+                            <div id="submit__login" onClick={() => validate()}>Je me connecte</div>
                         </div>
                     </form>
                    
                 </div>
 
                 <div className="grp-accueil__signup">
-                    Pas encore de compte ?&nbsp;<a href=""><Link to="/signup">Inscrivez-vous</Link></a>
+                    Pas encore de compte ?&nbsp;<Link to="/signup">Inscrivez-vous</Link>
                 </div>
 
             </div>

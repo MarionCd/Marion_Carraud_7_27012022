@@ -1,10 +1,8 @@
-import { createContext } from "react";
+import React from 'react';
 
-export const Contexte = createContext({
-    isLoggedIn: false,
-    userId: null,
-    token: null,
-    account: null,
-    login: () => {},
-    logout: () => {},
+export default React.createContext({
+    isAuthenticated: false, 
+    setIsAuthenticated: value => {
+    }
 });
+ 
