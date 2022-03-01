@@ -16,6 +16,7 @@
     "express-mongo-sanitize": "^2.2.0",
     "express-router": "^0.0.1",
     "express-static": "^1.2.6",
+    "fs": "^0.0.1-security",
     "helmet": "^5.0.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.4",

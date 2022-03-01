@@ -19,7 +19,7 @@ function LoginAccueil() {
             email: email,
             password: password,
         };
-
+ 
         await axios
             .post("http://localhost:8080/api/login",  user)
             .then((res) => {
@@ -30,6 +30,10 @@ function LoginAccueil() {
                     window.localStorage.setItem("userToken", JSON.stringify(res.data.token));
                     window.localStorage.setItem("userId", JSON.stringify(res.data.userId));
                     setIsAuthenticated(true);
+                    console.log(res)
+                   
+                    
+                    window.alert('félicitations !')
                     window.location = ("/accueil")
                 }
             })
