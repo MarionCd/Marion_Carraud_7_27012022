@@ -13,7 +13,7 @@ exports.login = (req, res, next) => {
         }
       bcrypt
         .compare(req.body.password, user.password)
-        .then(valid => {
+        .then(valid => { 
           if (!valid) {
             return res.status(401).json({ error: 'Nom d\'utilisateur ou mot de passe incorrect !' });
           }
@@ -24,7 +24,7 @@ exports.login = (req, res, next) => {
               CLEF_SECRETE,
               { expiresIn: '24h' } // l'utilisateur devra se reconnecter au bout de 24h
             )
-          });
+          })
         })  
     .catch(error => res.status(500).json({ error }));
     })

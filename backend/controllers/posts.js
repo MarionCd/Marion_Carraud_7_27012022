@@ -9,7 +9,7 @@ exports.addPost = (req, res, next) => {
     const token = req.headers.authorization.split(' ')[1]
     const decodedToken = jwt.verify(token, CLEF_SECRETE)
     const userId = decodedToken.userId
-    const content = req.body.contenu;
+    const content = req.body.contenu; 
 
     const newPost = async () => { 
         await Post

@@ -14,31 +14,61 @@ function LoginAccueil() {
     const history = useHistory()
 
     const validate = async () => { // récupération de l'email et password et envoi des données au backend avec axios
-        
         const user = {
-            email: email,
-            password: password,
-        };
- 
-        await axios
-            .post("http://localhost:8080/api/login",  user)
-            .then((res) => {
-                if (res.data.error) {
-                    console.log(res.data.error)
-                } else {
-                    localStorage.clear();
-                    window.localStorage.setItem("userToken", JSON.stringify(res.data.token));
-                    window.localStorage.setItem("userId", JSON.stringify(res.data.userId));
-                    setIsAuthenticated(true);
-                    console.log(res)
-                   
-                    
-                    window.alert('félicitations !')
-                    window.location = ("/accueil")
-                }
-            })
-            .catch(() => {console.log("problème envoi au serveur")})
+                    email: email,
+                    password: password,
+                };
+         
+                await axios
+                    .post("http://localhost:8080/api/login",  user)
+                    .then((res) => {
+                        if (res.data.error) {
+                            console.log(res.data.error)
+                        } else {
+        
+                            localStorage.clear();
+                            window.localStorage.setItem("userToken", JSON.stringify(res.data.token));
+                            window.localStorage.setItem("userId", JSON.stringify(res.data.userId));
+                            setIsAuthenticated(true);
+                                  
+                            window.alert('félicitations !')
+                            window.location = ("/accueil")
+                        }
+                    })
+                    .catch(() => {console.log("problème envoi au serveur")})
+            
+
     }
+
+
+    // const validate = async () => { // récupération de l'email et password et envoi des données au backend avec axios
+        
+    //     const user = {
+    //         email: email,
+    //         password: password,
+    //     };
+ 
+    //     await axios
+    //         .post("http://localhost:8080/api/login",  user)
+    //         .then((res) => {
+    //             if (res.data.error) {
+    //                 console.log(res.data.error)
+    //             } else {
+
+    //                 localStorage.clear();
+    //                 window.localStorage.setItem("userToken", JSON.stringify(res.data.token));
+    //                 window.localStorage.setItem("userId", JSON.stringify(res.data.userId));
+    //                 setIsAuthenticated(true);
+    //                 // console.log(res.user.userId)
+                          
+    //                 window.alert('félicitations !')
+    //                 window.location = ("/accueil")
+    //             }
+    //         })
+    //         .catch(() => {console.log("problème envoi au serveur")})
+    // }
+
+
     useEffect(() => {
 
         if (isAuthenticated) {
