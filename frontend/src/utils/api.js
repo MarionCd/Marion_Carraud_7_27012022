@@ -1,13 +1,13 @@
 import jwtDecode from "jwt-decode";
 
-export function hasAuthenticated() {
+export function login() {
     const token = (window.localStorage.getItem("userToken"));
-    const resultTokenValidation = token ? tokenIsValid(token) : false;
+    const resToken = token ? tokenIsValid(token) : false;
 
-    if (resultTokenValidation === false) {
+    if (resToken === false) {
         window.localStorage.removeItem("userToken");
     }
-    return resultTokenValidation;
+    return resToken;
 }
 
 export function logout() {

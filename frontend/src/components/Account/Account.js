@@ -20,24 +20,41 @@ function Account() {
         <div className='grp-accueil'>
             <div className="grp-accueil__login-ou-signup">
                 <div className="grp-accueil__login">
-                    <form id="infos-profil"  onSubmit={(event) => {event.preventDefault();} }>
+                    <form 
+                        id="infos-profil"
+                        onSubmit={(event) => {event.preventDefault();} }>
+                        
                         <div>
-                            <img src={photoProfil} alt="photo profil" className="grp-banner__vignette-profil statut-left tooltip" title="Modifier la photo"/>
+                            <img 
+                                src={photoProfil} 
+                                alt="photo profil" 
+                                className="grp-banner__vignette-profil statut-left tooltip" 
+                                title="Modifier la photo"/>
                         </div>
 
                         <div className='info-modifiable'>
                             <label>Prénom</label>
-                            <input defaultValue={surname} tabindex="1" onChange={(e) => setPrenom(e.target.value)}></input>
+                            <input 
+                                defaultValue={surname} 
+                                tabIndex="1" 
+                                onChange={(e) => setPrenom(e.target.value)}/>
                         </div>
 
                         <div className='info-modifiable'>
                             <label>Nom</label>
-                            <input defaultValue={name} tabindex="1" onChange={(e) => setNom(e.target.value)}></input>
+                            <input 
+                                defaultValue={name} 
+                                tabIndex="1" 
+                                onChange={(e) => setNom(e.target.value)}/>
                         </div>
 
                         <div className='info-modifiable'>
                             <label>Date de naissance 🎂</label>
-                            <input type="date" defaultValue={birthday} tabindex="1" onChange={(e) => setAnniversaire(e.target.value)}></input>
+                            <input 
+                                type="date" 
+                                defaultValue={birthday} 
+                                tabIndex="1" 
+                                onChange={(e) => setAnniversaire(e.target.value)}/>                        
                         </div>
 
                         <div>

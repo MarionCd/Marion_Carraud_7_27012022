@@ -2,18 +2,23 @@ import React from "react";
 import { createRef, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import Picker from 'emoji-picker-react';
-import '../Actus.css';
+import '../Actus.css'; 
 import photoProfil from '../../../assets/Photo-profil-defaut.png'; //à modifier avec la photo dans la bdd
+import axios from "axios";
 
 function ActusCenter() {
     const prenom = "Prénom"
     const nom = "Nom"
     // const inputRef = createRef() 
+     // const [showPickerComment, setShowPickerComment] = useState(false);
     const [message, setMessage] = useState();
     const [commentaire, setCommentaire] = useState();
     const [showPicker, setShowPicker] = useState(false);
-    const [showPickerComment, setShowPickerComment] = useState(false);
+   
     const auteur = prenom+" "+nom;
+    const [posts, setPosts] = useState([]);
+    const [comments, setComments] = useState([]);
+  
 
     const onEmojiClick = (e, emojiObject) => { // choix d'un smiley
         // const ref = inputRef.current;
@@ -57,9 +62,7 @@ function ActusCenter() {
         document.getElementById('commentaire-sous-publi').value = '';
     }
 
-    const [posts, setPosts] = useState([]);
-    const [comments, setComments] = useState([]);
-  
+
     return (
             <div className='accueil__center'>
 

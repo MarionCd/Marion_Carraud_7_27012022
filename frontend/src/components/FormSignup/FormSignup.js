@@ -45,6 +45,7 @@ function FormSignup(){
             
         } else {
             console.log("impossible d'enregistrer l'utilisateur")
+            window.alert( "Merci de remplir le formulaire")
         }  
     }
     

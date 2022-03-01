@@ -5,20 +5,20 @@ import Inscription from './pages/Inscription/Inscription'
 import Home from './pages/Home/Home'
 import Account from './pages/Account/Account'
 import Error from '../src/components/Error/index'
-import {hasAuthenticated} from "./utils/api";
+import { login } from "./utils/api";
 import Auth from "./utils/context"
-import AuthenticatedRoute from "./utils/authenticated";
+import LoggedRoute from "./utils/logged";
 import './index.css';
 
 const App = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState(hasAuthenticated());
+    const [isAuthenticated, setIsAuthenticated] = useState(login());
     
     return (
         <Auth.Provider value={{isAuthenticated, setIsAuthenticated}}>
             <BrowserRouter>
                 <Switch>
-                    <AuthenticatedRoute exact path="/accueil" component={Home}/>
-                    <AuthenticatedRoute exact path="/account" component={Account}/>
+                    <LoggedRoute exact path="/accueil" component={Home}/>
+                    <LoggedRoute exact path="/account" component={Account}/>
                     
                     <Route exact path="/" component={Login} />
                     <Route exact path="/signup" component={Inscription}/>

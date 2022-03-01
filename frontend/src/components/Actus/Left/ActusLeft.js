@@ -1,6 +1,4 @@
 import '../Actus.css'
-import { Link } from 'react-router-dom'
-import photoProfil from '../../../assets/Photo-profil-defaut.png'
 
 function ActusLeft() {
 
