@@ -20,6 +20,7 @@ const App = () => {
             </Switch>
     } else {
             <Switch>
+                 <Route exact path="/"><Login/></Route>
                 <Route exact path="/signup"><Inscription/></Route>
                 <Route><Error/></Route>
             </Switch>
@@ -35,7 +36,7 @@ const App = () => {
                 login: login,
                 logout: logout,
             }}
-        >  
+        >   
              <Switch>
                 <Route exact path="/"><Login/></Route>
                 <Route exact path="/signup"><Inscription/></Route>

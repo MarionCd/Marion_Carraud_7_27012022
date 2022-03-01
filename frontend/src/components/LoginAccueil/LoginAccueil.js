@@ -2,12 +2,17 @@ import './LoginAccueil.css'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios';
+import React, { useContext } from "react";
+import { Contexte } from '../../utils/context';
+
+// import { useHttpRequest } from "../../utils/request";
  
 function LoginAccueil() {
     const titreLogin = "Connectez-vous"
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
-    
+    const auth = useContext(Contexte);
+
     const validate = () => { // récupération de l'email et password et envoi des données au backend avec axios
         
         const user = {
@@ -17,9 +22,11 @@ function LoginAccueil() {
 
         axios
             .post("http://localhost:8080/api/login",  user)
-            .then(res => {
+            .then(res => { 
                 console.log(res)
                 console.log("utilisateur connecté")
+        
+                auth.login(res.data.userId, res.data.token, res.data.account);
                 window.alert( "Bienvenue !")
                 window.location = '/accueil';
             })
