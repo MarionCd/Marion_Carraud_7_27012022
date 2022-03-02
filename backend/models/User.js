@@ -3,8 +3,6 @@ const db = require('../db/db');
  
 const {DataTypes} = sequelize;
 
-
-
 const User = db.define('user', {
   email: { 
     type: DataTypes.STRING, 

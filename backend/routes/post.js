@@ -1,12 +1,13 @@
 //comme fichier sauce
 
 const express = require("express");
-const router = express.Router();
+const router = express.Router(); 
 const auth = require("../middleware/auth");
 const multer = require("../middleware/multer-config");
 const postCtrl = require("../controllers/posts");
 
-router.delete("/comment/:id", auth, postCtrl.deleteComment);
-router.delete("/:id", auth, postCtrl.deletePost);
+router.post("/:id", auth, postCtrl.addPost);
+// router.delete("/comment/:id", auth, postCtrl.deleteComment);
+// router.delete("/:id", auth, postCtrl.deletePost);
 
 module.exports = router;

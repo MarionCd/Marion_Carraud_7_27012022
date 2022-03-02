@@ -9,6 +9,9 @@ import { logout } from "../../utils/api";
 function BannerConnecte() {
     const slogan = "La détente au service de l'équipe"
 
+    const userName = window.localStorage.getItem("userName").replace(/"/g, '');
+    const userLastname = window.localStorage.getItem("userLastname").replace(/"/g, '');
+
     const {isAuthenticated, setIsAuthenticated} = useContext(Auth);
 
     const handleLogout = () => {
@@ -36,7 +39,8 @@ function BannerConnecte() {
                                 />
                             </Link>
                         </div>
-                        <p>&nbsp;Prénom</p><p>&nbsp;Nom</p> 
+                        <p>&nbsp;{userName}</p>
+                        <p>&nbsp;{userLastname}</p> 
                 </div>   
                 <Link to="/" id="logout">
                     <button onClick={handleLogout}>🔴 Se déconnecter</button>

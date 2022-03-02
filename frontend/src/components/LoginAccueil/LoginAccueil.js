@@ -15,7 +15,6 @@ function LoginAccueil() {
 
     const validate = async () => { // récupération de l'email et password et envoi des données au backend avec axios
         const user = {
-                   
                     email: email,
                     password: password,
                 };
@@ -30,9 +29,11 @@ function LoginAccueil() {
                             localStorage.clear();
                             window.localStorage.setItem("userToken", JSON.stringify(res.data.token));
                             window.localStorage.setItem("userId", JSON.stringify(res.data.userId));
+                            window.localStorage.setItem("userName", JSON.stringify(res.data.userName));
+                            window.localStorage.setItem("userLastname", JSON.stringify(res.data.userLastname));
                             setIsAuthenticated(true);       
-                            
-                            window.alert('félicitations !')
+                            // console.log(res.data)
+                            // window.alert('félicitations !')
                             window.location = ("/accueil")
                         }
                     })

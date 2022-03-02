@@ -10,7 +10,6 @@ exports.signup = async (req, res, next) => {
     .hash(req.body.password, 10)
     .then((hash) => {
       const newUser = User.create({
-       
         email: req.body.email,
         password: hash, 
         name: req.body.name,

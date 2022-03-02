@@ -28,11 +28,11 @@ function FormSignup(){
         if(prenomIsValid && nomIsValid && emailIsValid && passwordIsValid){
             const user = {
                 email: email,
-                password: password,
+                password: password, 
                 name: prenom,
                 lastname: nom
             };
-        
+         
             axios
                 .post("http://localhost:8080/api/signup",  user)
                 .then(res => {
