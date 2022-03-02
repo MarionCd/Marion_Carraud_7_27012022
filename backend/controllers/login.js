@@ -18,9 +18,9 @@ exports.login = (req, res, next) => {
             return res.status(401).json({ error: 'Nom d\'utilisateur ou mot de passe incorrect !' });
           }
           res.status(200).json({
-            userId: user._id,
+            userId: user.id,
             token: jwt.sign(
-              { userId: user._id },
+              { userId: user.id },
               CLEF_SECRETE,
               { expiresIn: '24h' } // l'utilisateur devra se reconnecter au bout de 24h
             ), 

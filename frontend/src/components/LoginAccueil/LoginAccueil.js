@@ -31,7 +31,7 @@ function LoginAccueil() {
                             window.localStorage.setItem("userToken", JSON.stringify(res.data.token));
                             window.localStorage.setItem("userId", JSON.stringify(res.data.userId));
                             setIsAuthenticated(true);       
-                            console.log(res.data)
+                            
                             window.alert('félicitations !')
                             window.location = ("/accueil")
                         }
