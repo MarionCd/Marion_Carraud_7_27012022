@@ -28,6 +28,23 @@ function PostsPublies() {
             .catch(() => {console.log("problème envoi au serveur")});
     }
 
+    const deletePublication = async (e) => {
+        await axios
+            .delete(`http://localhost:8080/api/posts/:${userId}`, {
+                headers: {
+                    'authorization': `Bearer ${token}`
+                },
+                params: {
+                    id: userId
+                }
+            })
+            .then((res) => {
+                console.log(res)
+                window.location.reload();
+            })
+            .catch((error) => console.log(error))
+    }
+
     useEffect(() => {
         listingPublication()
         setPostsRefresh(false)
@@ -58,7 +75,7 @@ function PostsPublies() {
 
                         <div className="statut-right bouton-publication">
                             <div className="parent__ajout-photo">
-                                <button className="picture-icon poubelle">🗑</button>
+                                <button className="picture-icon poubelle" onClick={deletePublication}>🗑</button>
                             </div>
                         </div>
                     </div>
