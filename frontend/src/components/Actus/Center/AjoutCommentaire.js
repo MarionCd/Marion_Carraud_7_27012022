@@ -57,7 +57,10 @@ function PostComment() {
                 .post(`http://localhost:8080/api/comments/:${userId}`, commentaire, {
                     headers: {
                         'authorization': `Bearer ${token}`
-                    }
+                    },
+                    // params: {
+                    //     id: postId
+                    // }
                 })
                     .then((res) => {
                         if (res.data.error) {

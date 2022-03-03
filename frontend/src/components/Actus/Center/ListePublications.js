@@ -24,7 +24,7 @@ function PostsPublies() {
                 res.data.forEach((e)=>{
                     posts.push(e)
                 })
-                console.log(res)
+                //console.log(res)
                
             })
             .catch(() => {console.log("problème envoi au serveur")});
@@ -42,21 +42,22 @@ function PostsPublies() {
             })
             .then((res) => {
                 console.log(res)
-                window.location.reload();
+               // setPostsRefresh(true) 
+                // window.location.reload();
             })
             .catch((error) => console.log(error))
     }
 
     useEffect(() => {
         listingPublication()
-        setPostsRefresh(false) 
+        setPostsRefresh(true) 
      
     }, [postsRefresh, listingPublication])
     
     return(
         <div>  
             {posts.map(post =>     
-                <div className="statut-a-publier blocRouge"  key={post.createdAt}>
+                <div className="statut-a-publier blocRouge"  key={post.contenu._id}>
                     <div className="statut-a-publier__avatar-text">
                         <div>
                             <img 
