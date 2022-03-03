@@ -33,7 +33,7 @@ function BannerConnecte() {
                             <Link to="/account">
                                 <img 
                                     src={photoProfil} 
-                                    alt="photo profil" 
+                                    alt="photoprofil" 
                                     className="grp-banner__vignette-profil" 
                                     title="accéder aux infos profil"
                                 />

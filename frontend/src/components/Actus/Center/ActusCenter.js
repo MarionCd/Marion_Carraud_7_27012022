@@ -1,15 +1,28 @@
 import React from "react";
 import PostAPublier from './AjoutPublication'
 import PostPublies from './ListePublications'
+// import {useSelector} from "react-redux";
 
 function ActusCenter() {
+    // const posts = useSelector((state) => state.postReducer)
+   // console.log(posts)
+  // const post = "machin"
+   //const [listePublications, setListePublications] = useState([]);
 
     return (
         <div className='accueil__center'>
             <h2>Bienvenue sur Groupomania !</h2>
-                <PostAPublier />
-                <h2>Ce que vous avez publié</h2> 
-                <PostPublies />        
+            <PostAPublier />
+                <h2>Ce que votre réseau a publié</h2> 
+                
+                <PostPublies /> 
+                
+                {/* {listePublications.map((post) => (
+                
+                <PostPublies post={post} key={post.createdAt} /> 
+                
+                ))} */}
+                
         </div>
     )
 }

@@ -1,29 +1,52 @@
-import React, { useState, useContext } from "react";
+import React, { useState, createRef, useEffect } from "react";
+import Picker from 'emoji-picker-react';
 import photoProfil from '../../../assets/Photo-profil-defaut.png'; //à modifier avec la photo dans la bdd
-import Auth from "../../../utils/context";  
+//import Auth from "../../../utils/context";  
 import axios from 'axios';
 
+
 function PostAPublier() {
-    const token = window.localStorage.getItem("userToken").replace(/"/g, '')
+    const token = window.localStorage.getItem("userToken").replace(/"/g, '');
     const userName = window.localStorage.getItem("userName").replace(/"/g, '');
     const userLastname = window.localStorage.getItem("userLastname").replace(/"/g, '');
     const userId = window.localStorage.getItem("userId");
-
+   
     const auteur = userName+" "+userLastname;
-    // const publiValue = document.getElementById('statut-publication').value
-
-    const [publication, setPublication] = useState();
+    const [publication, setPublication] = useState('');
     const [listePublications, setListePublications] = useState([]);
-    const {isAuthenticated, setIsAuthenticated} = useContext(Auth);
+    //const {isAuthenticated, setIsAuthenticated} = useContext(Auth);
+
+    const [showPicker, setShowPicker] = useState(false);
+    const [cursorPosition, setCursorPosition] = useState();
+    const inputRef = createRef() 
 
     const handleChange = (e) =>{
         setPublication(e.target.value)
     };
 
+    const choixEmoji = (e, { emoji }) => {
+        const ref = inputRef.current;
+        ref.focus();
+        const start = publication.substring(0,ref.selectionStart);
+        const end = publication.substring(ref.selectionStart);
+        const text = start + emoji + end;
+        setPublication(text);
+        setCursorPosition(start.length + emoji.length)
+    }
+
+    const handleShowEmojis = () => {
+        inputRef.current.focus();
+        setShowPicker(!showPicker);
+    }
+
+    useEffect(() => {
+        inputRef.current.selectionEnd = cursorPosition;
+    }, [cursorPosition]);
+
     const envoiPublication = async (e) => {
         let publiValue = document.getElementById('statut-publication').value
         
-        if(publiValue != ""){   
+        if(publiValue !== ""){   
             let post = {
                 _id: userId,
                 author: auteur,
@@ -35,15 +58,15 @@ function PostAPublier() {
                     headers: {
                         'authorization': `Bearer ${token}`
                     }
-                } )
+                })
                     .then((res) => {
                         if (res.data.error) {
                             console.log("test")
                             console.log(res.data.error)
                         } else {
                             console.log(res)
-                            listePublications.push(post)
-                             
+                            listePublications.push(post)  
+                            console.log(listePublications)
                         }    
                     })
                 .catch(() => {console.log("problème envoi au serveur")});
@@ -52,11 +75,6 @@ function PostAPublier() {
         }
         document.getElementById('statut-publication').value = "";
     }
-
-    const ouvrirMenuSmiley = (e) => {
-        console.log("ouverture du menu à smileys")
-    }
-
     return(
         <div className="statut-a-publier blocBleu">
             <div className="statut-a-publier__avatar-text">
@@ -77,6 +95,7 @@ function PostAPublier() {
                         type="text" 
                         placeholder="Que voulez-vous partager aujourd'hui ?" 
                         value={publication}
+                        ref={inputRef}
                         onChange={handleChange} />
 
                     <div className="encart-btn">
@@ -91,11 +110,13 @@ function PostAPublier() {
                     <div className="parent__ajout-photo">
                         <button 
                             className="picture-icon" 
-                            onClick={() => ouvrirMenuSmiley()} 
+                            onClick={handleShowEmojis} 
                             title="ajouter un smiley" >😃
                         </button>
                     </div>
+                    {showPicker && <Picker className="emoji-list" onEmojiClick={choixEmoji}/>}
                 </div>
+                
             </div>
         </div>
     )
