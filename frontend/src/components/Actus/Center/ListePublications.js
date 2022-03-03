@@ -3,68 +3,70 @@ import PostComment from './AjoutCommentaire'
 import GetComment from './ListeCommentaire'
 // import Auth from "../../../utils/context";  
 import axios from 'axios';
+// import _ from "lodash";
 
 function PostsPublies() {
     const token = window.localStorage.getItem("userToken").replace(/"/g, '');
     const userName = window.localStorage.getItem("userName").replace(/"/g, '');
     const userLastname = window.localStorage.getItem("userLastname").replace(/"/g, '');
     const userId = window.localStorage.getItem("userId");
+   
+
 
     const [postsRefresh, setPostsRefresh] = useState(false)
     const [postsData, setPostsData] = useState([])
 
-    const listingPublication = async (e) => {
+    const [listePublications, setListePublications] = useState([]);
+
+    // const listingPublication = () => {
+    //     const token = window.localStorage.getItem("userToken");
+    //     const tokenIsEmpty = _.isEmpty(token);
     
-        const token = window.localStorage.getItem("userToken").replace(/"/g, '');
-        const userName = window.localStorage.getItem("userName").replace(/"/g, '');
-        const userLastname = window.localStorage.getItem("userLastname").replace(/"/g, '');
-        const userId = window.localStorage.getItem("userId");
+    //     return (dispatch) => {
+    //         return axios.get(`http://localhost:8080/api/posts/:${userId}`)
+    //             .then((res) => {
+    
+    //                     !tokenIsEmpty && dispatch({type: GET_POSTS, payload: res.data.post})
+    //                 }
+    //             )
+    //             .catch((error) => console.log(error))
+    //     };
+    
+    // };
+
+    // const listingPublication = async (e) => {
+    
+    //     const token = window.localStorage.getItem("userToken").replace(/"/g, '');
+    //     const userName = window.localStorage.getItem("userName").replace(/"/g, '');
+    //     const userLastname = window.localStorage.getItem("userLastname").replace(/"/g, '');
+    //     const userId = window.localStorage.getItem("userId");
        
+    //     await axios
+    //         // .get(`http://localhost:8080/api/posts/`)
 
-        await axios
-            // .get(`http://localhost:8080/api/posts/`)
+    //         .get(`http://localhost:8080/api/posts/:${userId}`)
 
-            .get(`http://localhost:8080/api/posts/:${userId}`, {
-                headers: {
-                    'authorization': `Bearer ${token}`
-                }
-            })
+    //         // .get(`http://localhost:8080/api/posts/:${userId}`, {
+    //         //     headers: {
+    //         //         'authorization': `Bearer ${token}`
+    //         //     }
+    //         // })
             
-            .then((res) => {
-                // setPostsData(res.data)
-                // setPostsRefresh(false)
-                console.log(res)
-            })
-            .catch(() => {console.log("problème réception listing")});
-    
-        }
-    useEffect(() => {
-        listingPublication()
-        setPostsRefresh(false)
             
-        }, [postsRefresh, listingPublication])
-
-        // const listingPublication = (e) => {
-        //     const token = window.localStorage.getItem("userToken");
+    //         .then((res) => {
+    //             // setPostsData(res.data)
+    //             // setPostsRefresh(false)
+    //             console.log(res)
+    //         })
+    //         .catch(() => {console.log("problème réception listing")});
     
-        //      axios
-        //         .get(`http://localhost:8080/api/posts/${userId}`, {
-        //             headers:{
-        //                 'authorization' : `Bearer ${token}`
-        //             }
-        //         })
-        //         .then((res) => {
-        //             setPostsData(res.data)
-        //             setPostsRefresh(false)
-        //             console.log(res)
-        //         })
-        //         .catch(() => {console.log("problème réception listing")});
-        // }
-        // useEffect(() => {
-        //     listingPublication()
-        //     setPostsRefresh(false)
-                
-        //     }, [postsRefresh, listingPublication])
+    //     }
+    // useEffect(() => {
+    //     listingPublication()
+    //     setPostsRefresh(false)
+            
+    //     }, [postsRefresh, listingPublication])
+
 
     return(
         

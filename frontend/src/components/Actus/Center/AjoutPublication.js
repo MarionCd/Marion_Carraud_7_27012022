@@ -4,7 +4,6 @@ import photoProfil from '../../../assets/Photo-profil-defaut.png'; //à modifier
 //import Auth from "../../../utils/context";  
 import axios from 'axios';
 
-
 function PostAPublier() {
     const token = window.localStorage.getItem("userToken").replace(/"/g, '');
     const userName = window.localStorage.getItem("userName").replace(/"/g, '');
