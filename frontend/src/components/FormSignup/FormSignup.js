@@ -8,6 +8,7 @@ function FormSignup(){
     let regexEmail = /^(([^<>()\],;:\s@"]+(\.[^<>()\],;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     //let regexEmail = /^(([^<>()\[\]\.,;:\s@"]+(\.[^<>()\[\]\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     let regexPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/ //Min 8 characters, au moins 1 lettre et 1 chiffre
+    
     const [email, setEmail] = useState();
     const emailIsValid = regexEmail.test(email)
     const [prenom, setPrenom] = useState();
@@ -16,6 +17,7 @@ function FormSignup(){
     const nomIsValid = regexSimple.test(nom)
     const [password, setPassword] = useState();
     const passwordIsValid = regexPassword.test(password)
+   
     const handleSubmit = (e) => {
         e.preventDefault();
     }
