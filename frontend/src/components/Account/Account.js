@@ -2,19 +2,34 @@ import './Account.css'
 import { Link } from 'react-router-dom'
 import photoProfil from '../../assets/Photo-profil-defaut.png'
 import { useState } from 'react'
+import axios from 'axios';
 
 function Account() {
-   
-    const surname = "Prénom"
-    const name = "Nom"
-    const birthday ="1950-01-01"
+    const token = window.localStorage.getItem("userToken").replace(/"/g, '');
+    const userName = window.localStorage.getItem("userName").replace(/"/g, '');
+    const userLastname = window.localStorage.getItem("userLastname").replace(/"/g, '');
+    const userId = window.localStorage.getItem("userId");
     const [prenom, setPrenom] = useState()
     const [nom, setNom] = useState()
-    const [anniversaire, setAnniversaire] = useState()
-    const validate = () => { console.log(prenom) // récupération des changements et envoi des données au backend avec axios
-        console.log(nom)
-        console.log(anniversaire)  
-    }
+
+    const updateAccount = async (e) => {  // récupération des changements et envoi des données au backend avec axios
+        let account = {
+            username: userName,
+            userlastname: userLastname,
+        }
+        await axios
+            .put(`http://localhost:8080/api/comments/:${userId}`, account, {
+                headers: {
+                    'authorization': `Bearer ${token}`
+                }
+            })
+            .then((res) => {
+                console.log(res)
+                window.alert("test")
+            })
+            .catch((error) => console.log(error))
+         
+        }
 
     return (
         <div className='grp-accueil'>
@@ -22,7 +37,7 @@ function Account() {
                 <div className="grp-accueil__login">
                     <form 
                         id="infos-profil"
-                        onSubmit={(event) => {event.preventDefault();} }>
+                        onSubmit={updateAccount}>
                         
                         <div>
                             <img 
@@ -35,7 +50,7 @@ function Account() {
                         <div className='info-modifiable'>
                             <label>Prénom</label>
                             <input 
-                                defaultValue={surname} 
+                                defaultValue={userName} 
                                 tabIndex="1" 
                                 onChange={(e) => setPrenom(e.target.value)}/>
                         </div>
@@ -43,28 +58,23 @@ function Account() {
                         <div className='info-modifiable'>
                             <label>Nom</label>
                             <input 
-                                defaultValue={name} 
+                                defaultValue={userLastname} 
                                 tabIndex="1" 
                                 onChange={(e) => setNom(e.target.value)}/>
                         </div>
 
-                        <div className='info-modifiable'>
-                            <label>Date de naissance 🎂</label>
-                            <input 
-                                type="date" 
-                                defaultValue={birthday} 
-                                tabIndex="1" 
-                                onChange={(e) => setAnniversaire(e.target.value)}/>                        
-                        </div>
-
                         <div>
-                            <button className="save__btn" type="submit" onClick={() => validate()} >Enregistrer mes modifications</button>
+                            <button 
+                                className="save__btn" 
+                                type="submit" 
+                                onClick={updateAccount} >Enregistrer mes modifications
+                            </button>
                         </div>
                     </form>
                 </div>
 
                 <div className="grp-accueil__signup">
-                    <a href="#" id="delete-account">❌ Supprimer mon compte définitivement ❌</a>
+                    <div id="delete-account">❌ Supprimer mon compte définitivement ❌</div>
                 </div>
             </div>
         </div>

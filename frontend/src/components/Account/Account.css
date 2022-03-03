@@ -1,6 +1,9 @@
 #delete-account{
     color:red;
-
+    cursor:pointer;
+}
+#delete-account:hover{
+    text-decoration:underline;
 }
 
 #infos-profil{
