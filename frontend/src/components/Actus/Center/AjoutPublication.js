@@ -50,7 +50,7 @@ function PostAPublier() {
             let post = {
                 _id: userId,
                 author: auteur,
-                contenu: publication,
+                content: publication,
             }
             
             await axios
@@ -66,7 +66,7 @@ function PostAPublier() {
                         } else {
                             console.log(res)
                             listePublications.push(post)  
-                            console.log(listePublications)
+                            console.log(post)
                         }    
                     })
                 .catch(() => {console.log("problème envoi au serveur")});

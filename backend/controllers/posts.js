@@ -21,10 +21,9 @@ exports.addPost = (req, res, next) => {
 
 exports.getAllPost = (req, res, next) => {
 
-    Post
-        .findAll()
+    Post.findAll()
         .then((post) => res.status(200).json(post))
-        .catch((error) => res.status(400).json({ error }));
+        .catch((error) => res.status(400).json(console.log(error)));
 }
 
 // exports.getAllPost = (req, res, next) => {

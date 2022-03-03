@@ -5,27 +5,34 @@ import GetComment from './ListeCommentaire'
 import axios from 'axios';
 
 function PostsPublies() {
-    // const token = window.localStorage.getItem("userToken").replace(/"/g, '');
-    // const userName = window.localStorage.getItem("userName").replace(/"/g, '');
-    // const userLastname = window.localStorage.getItem("userLastname").replace(/"/g, '');
-    // const userId = window.localStorage.getItem("userId");
+    const token = window.localStorage.getItem("userToken").replace(/"/g, '');
+    const userName = window.localStorage.getItem("userName").replace(/"/g, '');
+    const userLastname = window.localStorage.getItem("userLastname").replace(/"/g, '');
+    const userId = window.localStorage.getItem("userId");
 
     const [postsRefresh, setPostsRefresh] = useState(false)
     const [postsData, setPostsData] = useState([])
 
     const listingPublication = async (e) => {
-        const token = window.localStorage.getItem("userToken");
+    
+        const token = window.localStorage.getItem("userToken").replace(/"/g, '');
+        const userName = window.localStorage.getItem("userName").replace(/"/g, '');
+        const userLastname = window.localStorage.getItem("userLastname").replace(/"/g, '');
+        const userId = window.localStorage.getItem("userId");
+       
 
         await axios
-            .get(`http://localhost:8080/api/posts/`, {
-                headers:{
-                    'authorization' : `Bearer ${token}`
+            // .get(`http://localhost:8080/api/posts/`)
+
+            .get(`http://localhost:8080/api/posts/:${userId}`, {
+                headers: {
+                    'authorization': `Bearer ${token}`
                 }
             })
             
             .then((res) => {
-                setPostsData(res.data)
-                setPostsRefresh(false)
+                // setPostsData(res.data)
+                // setPostsRefresh(false)
                 console.log(res)
             })
             .catch(() => {console.log("problème réception listing")});

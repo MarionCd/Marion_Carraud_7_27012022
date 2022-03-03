@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PostAPublier from './AjoutPublication'
 import PostPublies from './ListePublications'
 // import {useSelector} from "react-redux";
@@ -7,7 +7,7 @@ function ActusCenter() {
     // const posts = useSelector((state) => state.postReducer)
    // console.log(posts)
   // const post = "machin"
-   //const [listePublications, setListePublications] = useState([]);
+  // const [listePublications, setListePublications] = useState([]);
 
     return (
         <div className='accueil__center'>
