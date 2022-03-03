@@ -22,7 +22,7 @@ exports.getAllPost = (req, res, next) => {
 
     Post.findAll({
         limit:10,
-        attributes: ["_id", "author", "contenu"]
+        attributes: ["_id", "author", "contenu", "createdAt"]
     })
         .then((post) => {
             res.status(200).json(post);
