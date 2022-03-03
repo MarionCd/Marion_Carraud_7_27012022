@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const Post = require('../models/Post'); 
+const Comment = require('../models/Commentaire')
 const CLEF_SECRETE = process.env.CLEF_SECRETE;
 
 exports.addPost = (req, res, next) => {
@@ -52,23 +53,18 @@ exports.deletePost = (req, res, next) => {
 }
 
 
-
-// exports.deletePost = (req, res, next) => {
-
-//     const token = req.headers.authorization.replace("Bearer ", "");
-//     const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
-//     const userId = decodedToken.userId;
-
-//     models.Post.findOne({
-//         where: {id: req.params.id}
-//     })
-//         .then(post => {
-//             if (post.UserId === userId) {
-//                 return post.destroy()
-//                     .then(() => res.status(200).json({id: post.id, message: "Le post a été bien  supprimé !"}))
-//                     .catch(error => res.status(400).json({error: "Impossible de supprimer le post !"}));
-//             }
-
-//         })
-//         .catch(error => res.status(404).json({error: "Le post n'a pas été  trouvé !"}));
-// }
+exports.addComment = (req, res, next) => {
+    const token = req.headers.authorization.split(' ')[1]
+    const decodedToken = jwt.verify(token, CLEF_SECRETE)
+    const userId = decodedToken.userId
+    const author = req.body.author;
+    const content = req.body.content;
+    
+    Comment.create({
+            _id: userId,
+            author: author,
+            contenu: content
+        })
+        .then(() => res.status(201).json({ success : 'Commentaire publié !' }))
+        .catch(error => res.status(400).json({ error }));
+};

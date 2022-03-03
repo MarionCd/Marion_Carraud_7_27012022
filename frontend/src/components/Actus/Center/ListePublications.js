@@ -24,6 +24,8 @@ function PostsPublies() {
                 res.data.forEach((e)=>{
                     posts.push(e)
                 })
+                console.log(res)
+               
             })
             .catch(() => {console.log("problème envoi au serveur")});
     }
@@ -47,7 +49,7 @@ function PostsPublies() {
 
     useEffect(() => {
         listingPublication()
-        setPostsRefresh(false)
+        setPostsRefresh(false) 
      
     }, [postsRefresh, listingPublication])
     

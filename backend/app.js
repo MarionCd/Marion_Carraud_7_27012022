@@ -4,6 +4,7 @@ const signupRoutes = require('./routes/signup');
 const loginRoutes = require('./routes/login');
 const accountRoutes = require('./routes/account');
 const postRoutes = require('./routes/post');
+const commentRoutes = require('./routes/comment');
 const bodyParser = require('body-parser');
 var helmet = require('helmet'); // sécurité
 const Db = require('./db/db');
@@ -36,6 +37,7 @@ app.use('/api/signup', signupRoutes);
 app.use('/api/login', loginRoutes);
 app.use('/api/account', accountRoutes);
 app.use('/api/posts', postRoutes);
+app.use('/api/comments', commentRoutes);
 
 Db.sync()
   .then(console.log("connexion à la bdd"))

@@ -3,7 +3,7 @@ const db = require('../db/db');
  
 const {DataTypes} = sequelize;
 
-const Commentaire = db.define('comment', {
+const Comment = db.define('comment', {
     _id: {
         type: DataTypes.STRING,
         required:true
@@ -19,4 +19,4 @@ const Commentaire = db.define('comment', {
   
 });
 
-module.exports = Commentaire;
+module.exports = Comment;
