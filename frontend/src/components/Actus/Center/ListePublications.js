@@ -10,9 +10,9 @@ function PostsPublies() {
     const userName = window.localStorage.getItem("userName").replace(/"/g, '');
     const userLastname = window.localStorage.getItem("userLastname").replace(/"/g, '');
     const userId = window.localStorage.getItem("userId");
-    const [postsRefresh, setPostsRefresh] = useState(false)
-    const [postsData, setPostsData] = useState([])
     const [posts, setPosts] = useState([]);
+
+    const [listeComment, setListeComment] = useState([]);
 
     const listingPublication = async (e) => {
         await axios
@@ -22,14 +22,7 @@ function PostsPublies() {
                 }
             })
             .then((res) => { 
-                // res.data.forEach((e)=>{
-                //     posts.push(e)
-                // })
-                //console.log(res)
                 setPosts(res.data)
-
-                //console.log(res.data)
-               
             })
             .catch(() => {console.log("problème envoi au serveur")});
     }
@@ -38,7 +31,7 @@ function PostsPublies() {
         await axios
             .delete(`http://localhost:8080/api/posts/:${userId}`, {
                 headers: {
-                    'authorization': `Bearer ${token}`
+                    'authorization': `Bearer ${token}`     
                 },
                 params: {
                     id: userId
@@ -52,17 +45,19 @@ function PostsPublies() {
             .catch((error) => console.log(error))
     }
 
-
     const addNewPost = (newPost) => {
         setPosts(posts.concat(newPost))
-        console.log(newPost)
+        //console.log(newPost)
+    }
+
+    const addNewComment = (newComment) => {
+        setListeComment(listeComment.concat(newComment))
+        //console.log(newPost)
     }
 
 
     useEffect(() => {
-        listingPublication()
-        // setPostsRefresh(false) 
-     
+        listingPublication()     
     }, [])
     
     return(
@@ -73,7 +68,6 @@ function PostsPublies() {
         </div>
        <h2>Ce qui a été publié</h2>
        <div>
-        {console.log(posts)}  
             {posts.map(post =>     
                 <div className="statut-a-publier blocRouge"  key={post.createdAt}>
                     <div className="statut-a-publier__avatar-text">
@@ -91,7 +85,12 @@ function PostsPublies() {
                         <div className='statut-center publication'>
                             <div className="publi-ami" >{post.contenu}</div>
                                 <GetComment/>
-                                <PostComment/>
+
+                                <div>
+       <PostComment addCommentaire = {(newComment)=>addNewComment(newComment)} />
+
+        </div>
+                                {/* <PostComment/> */}
                             </div> 
 
                         <div className="statut-right bouton-publication">

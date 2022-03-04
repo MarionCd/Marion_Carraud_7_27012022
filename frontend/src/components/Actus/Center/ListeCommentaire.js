@@ -11,9 +11,11 @@ function GetComment() {
     const userName = window.localStorage.getItem("userName").replace(/"/g, '');
     const userLastname = window.localStorage.getItem("userLastname").replace(/"/g, '');
     const userId = window.localStorage.getItem("userId");
-    const [commentsRefresh, setCommentsRefresh] = useState(false)
-    const [commentsData, setCommentsData] = useState([])
-    const [comments, setComments] = useState([]);
+   // const [commentsRefresh, setCommentsRefresh] = useState(false)
+   // const [commentsData, setCommentsData] = useState([])
+   const [comments, setComments] = useState([]);
+
+    const [listeComment, setListeComment] = useState([]);
 
     const listingCommentaires = async (e) => {
         await axios
@@ -23,11 +25,8 @@ function GetComment() {
                 }
             })
             .then((res) => { 
-                // res.data.forEach((e)=>{
-                //     comments.push(e)
-                // })
-                console.log(res)
-               
+                console.log(res.data) 
+                setListeComment(res.data)
             })
             .catch(() => {console.log("problème envoi liste commentaire au serveur")});
     }
@@ -43,7 +42,7 @@ function GetComment() {
                 }
             })
             .then((res) => {
-                //console.log(res)
+                console.log(res)
                 // setCommentsRefresh(true) 
                 // window.location.reload();
             })
@@ -52,15 +51,15 @@ function GetComment() {
 
     useEffect(() => {
         listingCommentaires()
-        setCommentsRefresh(false) 
+        //setCommentsRefresh(false) 
      
-    }, [commentsRefresh, listingCommentaires])
+    }, [])
    
 
     return(
         <div>
-            {comments.map(comment =>   
-                <div className="commentaire-publie"  key={comment.contenu._id}>
+            {listeComment.map(commentaire =>   
+                <div className="commentaire-publie"  >
                     <div className="publi-ami__commentaire statut-a-publier__avatar-text">
                         <div>
                             <img 
@@ -69,12 +68,12 @@ function GetComment() {
                                 className="grp-banner__vignette-profil statut-left"
                             />
                             <div className="auteur">
-                                <span className="auteur-prenom">{comment.author}</span>
+                                <span className="auteur-prenom">{commentaire.author}</span>
                             </div>
                         </div>
                                             
                         <div className="statut-center publication">
-                            <div className="publi-ami">{comment.contenu}</div>
+                            <div className="publi-ami">{commentaire.contenu}</div>
                         </div>
 
                         <div className="statut-right bouton-publication">

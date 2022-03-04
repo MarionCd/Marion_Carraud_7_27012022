@@ -1,7 +1,6 @@
 import React, { useState, createRef, useEffect } from "react";
 import Picker from 'emoji-picker-react';
-import photoProfil from '../../../assets/Photo-profil-defaut.png'; //à modifier avec la photo dans la bdd
-//import Auth from "../../../utils/context";  
+import photoProfil from '../../../assets/Photo-profil-defaut.png'; //à modifier avec la photo dans la bdd 
 import axios from 'axios';
 
 function PostAPublier({addPost}) {
@@ -13,7 +12,6 @@ function PostAPublier({addPost}) {
     const auteur = userName+" "+userLastname;
     const [publication, setPublication] = useState('');
     const [listePublications, setListePublications] = useState([]);
-    //const {isAuthenticated, setIsAuthenticated} = useContext(Auth);
 
     const [showPicker, setShowPicker] = useState(false);
     const [cursorPosition, setCursorPosition] = useState();
@@ -58,17 +56,13 @@ function PostAPublier({addPost}) {
                         'authorization': `Bearer ${token}`
                     }
                 })
-                    .then((res) => {
-                        if (res.data.error) {
-                            console.log("test")
-                            console.log(res.data.error)
-                        } else {
-                            //console.log(res)
-                            //listePublications.push(post)  
-                            //console.log(post)
-                            addPost(post)
-                        }    
-                    })
+                .then((res) => {
+                    if (res.data.error) {
+                        console.log(res.data.error)
+                    } else {
+                        addPost(post)
+                    }    
+                })
                 .catch(() => {console.log("problème envoi au serveur")});
         } else {
             window.alert('veuillez saisir au moins 1 caractère')

@@ -39,7 +39,7 @@ exports.deletePost = (req, res, next) => {
     const userId = decodedToken.userId;
 
     Post.findOne({
-        where: { _id: userId }
+        where: { id:req.params.id }
     })
         .then(post => {
             // if (post.UserId === userId) {

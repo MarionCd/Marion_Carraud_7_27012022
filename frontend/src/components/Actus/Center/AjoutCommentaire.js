@@ -3,7 +3,7 @@ import Picker from 'emoji-picker-react';
 import photoProfil from '../../../assets/Photo-profil-defaut.png'; //à modifier avec la photo dans la bdd
 import axios from 'axios';
 
-function PostComment() {
+function PostComment({addCommentaire}) {
     const token = window.localStorage.getItem("userToken").replace(/"/g, '');
     const userName = window.localStorage.getItem("userName").replace(/"/g, '');
     const userLastname = window.localStorage.getItem("userLastname").replace(/"/g, '');
@@ -15,12 +15,11 @@ function PostComment() {
     const inputRef = createRef() 
 
     const [comment, setComment] = useState('');
-    const [listeComment, setListeComment] = useState([]);
+ //   const [listeComment, setListeComment] = useState([]);
 
     const handleChangeComment = (e) =>{
         setComment(e.target.value)
-        console.log(comment)
-       
+        //console.log(comment)
     };
 
     const choixEmoji = (e, { emoji }) => {
@@ -50,28 +49,24 @@ function PostComment() {
             let commentaire = {
                 _id: userId,
                 author: auteur,
-                content: comment,
+                contenu: comment,
             }
 
             await axios
                 .post(`http://localhost:8080/api/comments/:${userId}`, commentaire, {
                     headers: {
                         'authorization': `Bearer ${token}`
-                    },
-                    // params: {
-                    //     id: postId
-                    // }
+                    }
                 })
-                    .then((res) => {
-                        if (res.data.error) {
-                            console.log("test")
-                            console.log(res.data.error)
-                        } else {
-                            console.log(res)
-                            listeComment.push(commentaire)  
-                            console.log(commentaire)
-                        }    
-                    })
+                .then((res) => {
+                    if (res.data.error) {
+                        console.log(res.data.error)
+                    } else {
+                        // console.log(res)
+                        //listeComment.push(commentaire)  
+                        addCommentaire(commentaire)
+                    }    
+                })
                 .catch(() => {console.log("problème envoi au serveur pour l'envoi commentaire")});
         } else {
             window.alert('veuillez saisir au moins 1 caractère')
