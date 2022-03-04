@@ -8,7 +8,7 @@ exports.addPost = (req, res, next) => {
     const decodedToken = jwt.verify(token, CLEF_SECRETE)
     const userId = decodedToken.userId
     const author = req.body.author;
-    const content = req.body.content;
+    const content = req.body.contenu;
     
     Post.create({
             _id: userId,
@@ -23,7 +23,7 @@ exports.getAllPost = (req, res, next) => {
 
     Post.findAll({
         limit:10,
-        attributes: ["_id", "author", "contenu", "createdAt"]
+        attributes: ["id","_id", "author", "contenu", "createdAt"]
     })
         .then((post) => {
             res.status(200).json(post);
@@ -35,18 +35,20 @@ exports.getAllPost = (req, res, next) => {
 exports.deletePost = (req, res, next) => {
 
     const token = req.headers.authorization.split(' ')[1]
-    const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+    const decodedToken = jwt.verify(token, CLEF_SECRETE);
     const userId = decodedToken.userId;
 
     Post.findOne({
-        where: { id:req.params.id }
+        where: { id: req.params.id }
     })
         .then(post => {
-            // if (post.UserId === userId) {
+            if (post.UserId === userId) {
                 return post.destroy()
-                    .then(() => res.status(200).json({ message: "Le post a été bien supprimé"}))
+                    .then(() => res.status(200).json({ 
+                        id: post.id,
+                        message: "Le post a été bien supprimé"}))
                     .catch(error => res.status(400).json({error: "Impossible de supprimer le post !"}));
-            // }
+            }
 
         })
         .catch(error => res.status(404).json({error: "Le post n'a pas été trouvé !"}));
@@ -58,10 +60,11 @@ exports.addComment = (req, res, next) => {
     const decodedToken = jwt.verify(token, CLEF_SECRETE)
     const userId = decodedToken.userId
     const author = req.body.author;
-    const content = req.body.content;
+    const content = req.body.contenu;
     
     Comment.create({
-            _id: userId,
+            _id: req.params.id,
+            idUser: userId,
             author: author,
             contenu: content
         })
@@ -71,10 +74,11 @@ exports.addComment = (req, res, next) => {
 
 exports.getAllComment = (req, res, next) => {
     // const postId = req.params.postId;
+    console.log(req.params.id)
     Comment.findAll({
-        // where: {postId: postId},
+        where: { _id: req.params.id },
         limit:10,
-        attributes: ["_id", "author", "contenu", "createdAt"]
+        attributes: ["_id", "author", "contenu", "createdAt", "id"]
     })
         .then((comment) => {
             res.status(200).json(comment);
@@ -86,18 +90,21 @@ exports.getAllComment = (req, res, next) => {
 exports.deleteComment = (req, res, next) => {
 
     const token = req.headers.authorization.split(' ')[1]
-    const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+    const decodedToken = jwt.verify(token, CLEF_SECRETE);
     const userId = decodedToken.userId;
+    console.log(req.params)
+    console.log(userId)
 
     Comment.findOne({
-        where: { _id: userId }
+        where: { id: req.params.id }
     })
         .then(comment => {
-            // if (post.UserId === userId) {
+            console.log(comment._id)
+            if (comment.idUser == userId) {
                 return comment.destroy()
                     .then(() => res.status(200).json({ message: "Le post a été bien supprimé"}))
                     .catch(error => res.status(400).json({error: "Impossible de supprimer le post !"}));
-            // }
+            }
 
         })
         .catch(error => res.status(404).json({error: "Le post n'a pas été trouvé !"}));

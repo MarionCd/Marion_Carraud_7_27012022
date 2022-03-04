@@ -70,7 +70,6 @@ function PostAPublier({addPost}) {
         document.getElementById('statut-publication').value = "";
     }
 
-
     return(
         <div className="statut-a-publier blocBleu">
             <div className="statut-a-publier__avatar-text">

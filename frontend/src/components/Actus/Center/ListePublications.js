@@ -11,8 +11,10 @@ function PostsPublies() {
     const userLastname = window.localStorage.getItem("userLastname").replace(/"/g, '');
     const userId = window.localStorage.getItem("userId");
     const [posts, setPosts] = useState([]);
-
     const [listeComment, setListeComment] = useState([]);
+
+    const [postData, setPostData] = useState();
+   //const postId = publi.id;
 
     const listingPublication = async (e) => {
         await axios
@@ -23,22 +25,30 @@ function PostsPublies() {
             })
             .then((res) => { 
                 setPosts(res.data)
+                //console.log(res.data)
             })
             .catch(() => {console.log("problème envoi au serveur")});
     }
 
-    const deletePublication = async (e) => {
+    const deletePublication = async (postId) => {
+   
+       //console.log(token)
+        //console.log(postId)
+       
         await axios
-            .delete(`http://localhost:8080/api/posts/:${userId}`, {
+        
+            .delete(`http://localhost:8080/api/posts/${postId}`, {
                 headers: {
                     'authorization': `Bearer ${token}`     
                 },
                 params: {
-                    id: userId
+                    id: postId
                 }
             })
             .then((res) => {
-                console.log(res)
+                console.log('test')
+                console.log(postId)
+                //console.log(res)
                // setPostsRefresh(true) 
                 // window.location.reload();
             })
@@ -51,8 +61,10 @@ function PostsPublies() {
     }
 
     const addNewComment = (newComment) => {
+        console.log(newComment)
+        console.log(listeComment)
         setListeComment(listeComment.concat(newComment))
-        //console.log(newPost)
+        
     }
 
 
@@ -84,10 +96,11 @@ function PostsPublies() {
                 
                         <div className='statut-center publication'>
                             <div className="publi-ami" >{post.contenu}</div>
-                                <GetComment/>
+                               {console.log(post.id)}
+                                <GetComment idPost={post.id} />
 
                                 <div>
-       <PostComment addCommentaire = {(newComment)=>addNewComment(newComment)} />
+       <PostComment  idPost={post.id} addCommentaire = {(newComment)=>addNewComment(newComment)} />
 
         </div>
                                 {/* <PostComment/> */}

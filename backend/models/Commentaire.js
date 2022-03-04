@@ -8,6 +8,10 @@ const Comment = db.define('comment', {
         type: DataTypes.STRING,
         required:true
     },
+    idUser: {
+        type: DataTypes.STRING,
+        required:true
+    },
     author: {
         type:DataTypes.STRING,
         required:true

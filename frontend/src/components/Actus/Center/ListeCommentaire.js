@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import PostComment from './AjoutCommentaire'
-// import GetComment from './ListeCommentaire'
 import axios from 'axios';
 import photoProfil from '../../../assets/Photo-profil-defaut.png'; //à modifier avec la photo dans la bdd
 
 
-function GetComment() {
+function GetComment(idPost) {
 
     const token = window.localStorage.getItem("userToken").replace(/"/g, '');
     const userName = window.localStorage.getItem("userName").replace(/"/g, '');
@@ -16,35 +15,41 @@ function GetComment() {
    const [comments, setComments] = useState([]);
 
     const [listeComment, setListeComment] = useState([]);
+    console.log(idPost)
 
-    const listingCommentaires = async (e) => {
+    const listingCommentaires = async () => {
         await axios
-            .get(`http://localhost:8080/api/comments/`, {
+            .get(`http://localhost:8080/api/comments/${idPost.idPost}`, {
                 headers: {
                     'authorization': `Bearer ${token}`
                 }
             })
             .then((res) => { 
                 console.log(res.data) 
-                setListeComment(res.data)
+                setListeComment(listeComment.concat(res.data))
             })
             .catch(() => {console.log("problème envoi liste commentaire au serveur")});
     }
 
-    const deleteCommentaire = async (e) => {
+    // const deleteComment = (prevComment) => {
+    //     setPosts(posts.concat(newPost))
+    //     //console.log(newPost)
+    // }
+
+    const deleteCommentaire = async (idComment) => {
+        console.log(idComment)
         await axios
-            .delete(`http://localhost:8080/api/comments/:${userId}`, {
+            .delete(`http://localhost:8080/api/comments/${idComment}`, {
                 headers: {
                     'authorization': `Bearer ${token}`
-                },
-                params: {
-                    id: userId
                 }
+               
             })
             .then((res) => {
+                console.log(listeComment)
+                setListeComment(listeComment.filter(comment => comment.id != idComment))
                 console.log(res)
-                // setCommentsRefresh(true) 
-                // window.location.reload();
+                
             })
             .catch((error) => console.log(error))
     }
@@ -59,7 +64,7 @@ function GetComment() {
     return(
         <div>
             {listeComment.map(commentaire =>   
-                <div className="commentaire-publie"  >
+                <div className="commentaire-publie"  key={commentaire.createdAt} >
                     <div className="publi-ami__commentaire statut-a-publier__avatar-text">
                         <div>
                             <img 
@@ -78,7 +83,7 @@ function GetComment() {
 
                         <div className="statut-right bouton-publication">
                             <div className="parent__ajout-photo">
-                                <button className="picture-icon poubelle" onClick={deleteCommentaire}>🗑</button>
+                                <button className="picture-icon poubelle" onClick={()=>deleteCommentaire(commentaire.id)}>🗑</button>
                             </div>
                         </div>
                     </div>
