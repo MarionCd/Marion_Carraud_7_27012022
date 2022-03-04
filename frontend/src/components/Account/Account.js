@@ -31,6 +31,25 @@ function Account() {
          
         }
 
+    const deleteAccount = async (e) => {
+        await axios
+            .delete(`http://localhost:8080/api/comments/:${userId}`, {
+                headers: {
+                    'authorization': `Bearer ${token}`
+                },
+                params: {
+                    id: userId
+                }
+            })
+            .then((res) => {
+                //console.log(res)
+                // setCommentsRefresh(true) 
+                // window.location.reload();
+            })
+            .catch((error) => console.log(error))
+    }
+    
+
     return (
         <div className='grp-accueil'>
             <div className="grp-accueil__login-ou-signup">
@@ -74,7 +93,9 @@ function Account() {
                 </div>
 
                 <div className="grp-accueil__signup">
-                    <div id="delete-account">❌ Supprimer mon compte définitivement ❌</div>
+                    <div 
+                        id="delete-account"
+                        onClick={deleteAccount}>❌ Supprimer mon compte définitivement ❌</div>
                 </div>
             </div>
         </div>
