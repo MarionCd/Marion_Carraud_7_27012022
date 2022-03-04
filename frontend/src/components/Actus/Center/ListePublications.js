@@ -3,6 +3,7 @@ import PostComment from './AjoutCommentaire'
 import GetComment from './ListeCommentaire'
 import axios from 'axios';
 import photoProfil from '../../../assets/Photo-profil-defaut.png'; //à modifier avec la photo dans la bdd
+import PostAPublier from "./AjoutPublication";
 
 function PostsPublies() {
     const token = window.localStorage.getItem("userToken").replace(/"/g, '');
@@ -21,10 +22,13 @@ function PostsPublies() {
                 }
             })
             .then((res) => { 
-                res.data.forEach((e)=>{
-                    posts.push(e)
-                })
+                // res.data.forEach((e)=>{
+                //     posts.push(e)
+                // })
                 //console.log(res)
+                setPosts(res.data)
+
+                //console.log(res.data)
                
             })
             .catch(() => {console.log("problème envoi au serveur")});
@@ -48,16 +52,30 @@ function PostsPublies() {
             .catch((error) => console.log(error))
     }
 
+
+    const addNewPost = (newPost) => {
+        setPosts(posts.concat(newPost))
+        console.log(newPost)
+    }
+
+
     useEffect(() => {
         listingPublication()
-        setPostsRefresh(true) 
+        // setPostsRefresh(false) 
      
-    }, [postsRefresh, listingPublication])
+    }, [])
     
     return(
-        <div>  
+    <>
+       <div>
+       <PostAPublier addPost = {(newPost)=>addNewPost(newPost)} />
+
+        </div>
+       <h2>Ce qui a été publié</h2>
+       <div>
+        {console.log(posts)}  
             {posts.map(post =>     
-                <div className="statut-a-publier blocRouge"  key={post.contenu._id}>
+                <div className="statut-a-publier blocRouge"  key={post.createdAt}>
                     <div className="statut-a-publier__avatar-text">
                         <div>
                             <img 
@@ -85,7 +103,7 @@ function PostsPublies() {
                 </div>
             )}
         </div>    
-    )
+    </>)
 };
 
 export default PostsPublies

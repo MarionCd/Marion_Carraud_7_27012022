@@ -4,7 +4,7 @@ import photoProfil from '../../../assets/Photo-profil-defaut.png'; //à modifier
 //import Auth from "../../../utils/context";  
 import axios from 'axios';
 
-function PostAPublier() {
+function PostAPublier({addPost}) {
     const token = window.localStorage.getItem("userToken").replace(/"/g, '');
     const userName = window.localStorage.getItem("userName").replace(/"/g, '');
     const userLastname = window.localStorage.getItem("userLastname").replace(/"/g, '');
@@ -49,7 +49,7 @@ function PostAPublier() {
             let post = {
                 _id: userId,
                 author: auteur,
-                content: publication,
+                contenu: publication,
             }
             
             await axios
@@ -63,9 +63,10 @@ function PostAPublier() {
                             console.log("test")
                             console.log(res.data.error)
                         } else {
-                            console.log(res)
-                            listePublications.push(post)  
-                            console.log(post)
+                            //console.log(res)
+                            //listePublications.push(post)  
+                            //console.log(post)
+                            addPost(post)
                         }    
                     })
                 .catch(() => {console.log("problème envoi au serveur")});
@@ -74,6 +75,8 @@ function PostAPublier() {
         }
         document.getElementById('statut-publication').value = "";
     }
+
+
     return(
         <div className="statut-a-publier blocBleu">
             <div className="statut-a-publier__avatar-text">

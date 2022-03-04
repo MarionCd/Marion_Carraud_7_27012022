@@ -45,6 +45,7 @@ function Account() {
                 //console.log(res)
                 // setCommentsRefresh(true) 
                 // window.location.reload();
+                window.location = '/';
             })
             .catch((error) => console.log(error))
     }
