@@ -13,44 +13,45 @@ function Account() {
     const [nom, setNom] = useState()
 
     const updateAccount = async (e) => {  // récupération des changements et envoi des données au backend avec axios
+        e.preventDefault();
+
         let account = {
-            username: userName,
-            userlastname: userLastname,
+            username: prenom,
+            userlastname: nom,
         }
+       // console.log(account)
         await axios
-            .put(`http://localhost:8080/api/comments/:${userId}`, account, {
+            .put(`http://localhost:8080/api/account/${userId}`, account, {
                 headers: {
                     'authorization': `Bearer ${token}`
                 }
             })
             .then((res) => {
-                console.log(res)
-                window.alert("test")
+                setPrenom(res.data.user.name)
+                setNom(res.data.user.lastname)
+                window.localStorage.setItem("userName", JSON.stringify(res.data.user.name));
+                window.localStorage.setItem("userLastname", JSON.stringify(res.data.user.lastname));
+                
+                window.alert('vos changements ont été pris en compte')
             })
-            .catch((error) => console.log(error))
-         
+            .catch((error) => console.log(error))  
         }
 
-    const deleteAccount = async (e) => {
+    const deleteAccount = async (userId) => {
+        console.log(token)
         await axios
-            .delete(`http://localhost:8080/api/comments/:${userId}`, {
+            .delete(`http://localhost:8080/api/account/${userId}`, {
                 headers: {
                     'authorization': `Bearer ${token}`
-                },
-                params: {
-                    id: userId
                 }
             })
             .then((res) => {
-                //console.log(res)
-                // setCommentsRefresh(true) 
-                // window.location.reload();
+                window.alert("votre compte a bien été supprimé")
                 window.location = '/';
             })
             .catch((error) => console.log(error))
     }
     
-
     return (
         <div className='grp-accueil'>
             <div className="grp-accueil__login-ou-signup">
@@ -70,7 +71,7 @@ function Account() {
                         <div className='info-modifiable'>
                             <label>Prénom</label>
                             <input 
-                                defaultValue={userName} 
+                                placeholder={userName} 
                                 tabIndex="1" 
                                 onChange={(e) => setPrenom(e.target.value)}/>
                         </div>
@@ -78,7 +79,7 @@ function Account() {
                         <div className='info-modifiable'>
                             <label>Nom</label>
                             <input 
-                                defaultValue={userLastname} 
+                                placeholder={userLastname} 
                                 tabIndex="1" 
                                 onChange={(e) => setNom(e.target.value)}/>
                         </div>
@@ -86,7 +87,7 @@ function Account() {
                         <div>
                             <button 
                                 className="save__btn" 
-                                type="submit" 
+                                // type="submit" 
                                 onClick={updateAccount} >Enregistrer mes modifications
                             </button>
                         </div>
@@ -96,7 +97,7 @@ function Account() {
                 <div className="grp-accueil__signup">
                     <div 
                         id="delete-account"
-                        onClick={deleteAccount}>❌ Supprimer mon compte définitivement ❌</div>
+                        onClick={()=>deleteAccount(userId)}>❌ Supprimer mon compte définitivement ❌</div>
                 </div>
             </div>
         </div>

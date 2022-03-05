@@ -3,16 +3,13 @@ import PostComment from './AjoutCommentaire'
 import axios from 'axios';
 import photoProfil from '../../../assets/Photo-profil-defaut.png'; //à modifier avec la photo dans la bdd
 
-
 function GetComment(idPost) {
 
     const token = window.localStorage.getItem("userToken").replace(/"/g, '');
     const userName = window.localStorage.getItem("userName").replace(/"/g, '');
     const userLastname = window.localStorage.getItem("userLastname").replace(/"/g, '');
     const userId = window.localStorage.getItem("userId");
-   // const [commentsRefresh, setCommentsRefresh] = useState(false)
-   // const [commentsData, setCommentsData] = useState([])
-   const [comments, setComments] = useState([]);
+    const [comments, setComments] = useState([]);
 
     const [listeComment, setListeComment] = useState([]);
     console.log(idPost)
@@ -31,13 +28,7 @@ function GetComment(idPost) {
             .catch(() => {console.log("problème envoi liste commentaire au serveur")});
     }
 
-    // const deleteComment = (prevComment) => {
-    //     setPosts(posts.concat(newPost))
-    //     //console.log(newPost)
-    // }
-
     const deleteCommentaire = async (idComment) => {
-        console.log(idComment)
         await axios
             .delete(`http://localhost:8080/api/comments/${idComment}`, {
                 headers: {
@@ -55,12 +46,9 @@ function GetComment(idPost) {
     }
 
     useEffect(() => {
-        listingCommentaires()
-        //setCommentsRefresh(false) 
-     
+        listingCommentaires()     
     }, [])
    
-
     return(
         <div>
             {listeComment.map(commentaire =>   

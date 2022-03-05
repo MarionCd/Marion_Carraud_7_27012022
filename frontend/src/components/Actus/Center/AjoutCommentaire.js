@@ -8,19 +8,15 @@ function PostComment({addCommentaire,  idPost}) {
     const userName = window.localStorage.getItem("userName").replace(/"/g, '');
     const userLastname = window.localStorage.getItem("userLastname").replace(/"/g, '');
     const userId = window.localStorage.getItem("userId");
-
     const auteur = userName+" "+userLastname;
     const [showPicker, setShowPicker] = useState(false);
     const [cursorPosition, setCursorPosition] = useState();
     const inputRef = createRef() 
-
     const [comment, setComment] = useState('');
- //   const [listeComment, setListeComment] = useState([]);
 
     const handleChangeComment = (e) =>{
         setComment(e.target.value)
         console.log(comment)
-        //console.log(comment)
     };
 
     const choixEmoji = (e, { emoji }) => {
@@ -43,10 +39,7 @@ function PostComment({addCommentaire,  idPost}) {
     }, [cursorPosition]);
 
     const envoiCommentaire = async (e) => {
-        //let commentValue = document.getElementById('commentaire-sous-publi').value
 
-         
-            
             let commentaire = {
                 _id: userId,
                 author: auteur,
@@ -63,9 +56,6 @@ function PostComment({addCommentaire,  idPost}) {
                     if (res.data.error) {
                         console.log(res.data.error)
                     } else {
-                        // console.log(res)
-                        //listeComment.push(commentaire)  
-                        //setPosts(posts.concat(newPost))
                         
                         addCommentaire(commentaire)
                         setComment('')

@@ -12,9 +12,7 @@ function PostsPublies() {
     const userId = window.localStorage.getItem("userId");
     const [posts, setPosts] = useState([]);
     const [listeComment, setListeComment] = useState([]);
-
     const [postData, setPostData] = useState();
-   //const postId = publi.id;
 
     const listingPublication = async (e) => {
         await axios
@@ -25,15 +23,11 @@ function PostsPublies() {
             })
             .then((res) => { 
                 setPosts(res.data)
-                //console.log(res.data)
             })
             .catch(() => {console.log("problème envoi au serveur")});
     }
 
     const deletePublication = async (postId) => {
-   
-       //console.log(token)
-        //console.log(postId)
        
         await axios
         
@@ -48,16 +42,12 @@ function PostsPublies() {
             .then((res) => {
                 console.log('test')
                 console.log(postId)
-                //console.log(res)
-               // setPostsRefresh(true) 
-                // window.location.reload();
             })
             .catch((error) => console.log(error))
     }
 
     const addNewPost = (newPost) => {
         setPosts(posts.concat(newPost))
-        //console.log(newPost)
     }
 
     const addNewComment = (newComment) => {
@@ -66,7 +56,6 @@ function PostsPublies() {
         setListeComment(listeComment.concat(newComment))
         
     }
-
 
     useEffect(() => {
         listingPublication()     
@@ -100,10 +89,9 @@ function PostsPublies() {
                                 <GetComment idPost={post.id} />
 
                                 <div>
-       <PostComment  idPost={post.id} addCommentaire = {(newComment)=>addNewComment(newComment)} />
-
-        </div>
-                                {/* <PostComment/> */}
+                                <PostComment  idPost={post.id} addCommentaire = {(newComment)=>addNewComment(newComment)} />
+                                </div>
+                               
                             </div> 
 
                         <div className="statut-right bouton-publication">
